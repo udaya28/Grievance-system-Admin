@@ -1,2 +1,0 @@
-(this.webpackJsonpadmin=this.webpackJsonpadmin||[]).push([[0],{10:function(n,e,t){},11:function(n,e,t){"use strict";t.r(e);var c=t(0),i=t(1),r=t.n(i),s=t(3),d=t.n(s);t(9),t(10);var o=function(){return Object(c.jsx)("div",{className:"App",children:Object(c.jsx)("h1",{children:"hello Admin.."})})};d.a.render(Object(c.jsx)(r.a.StrictMode,{children:Object(c.jsx)(o,{})}),document.getElementById("root"))},9:function(n,e,t){}},[[11,1,2]]]);
-//# sourceMappingURL=main.0f5d597c.chunk.js.map

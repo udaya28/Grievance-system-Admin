@@ -7,15 +7,13 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import { setLogin, setLoader, studentId } from './context/context';
 import Axios from 'axios';
 import { BoxLoading } from 'react-loadingg';
-// Axios.defaults.withCredentials = true;
 function App() {
   const [IsLoggedIn, setIsLoggedIn] = useState();
   const [showLoader, setShowLoader] = useState(false);
-  const [studentID, setStudentID] = useState({});
+  const [studentID, setAdminID] = useState({});
 
   useEffect(() => {
     (async () => {
-      // console.log(cookie.get('token'));
       if (cookie.get('token')) {
         setShowLoader(true);
         const res = await Axios.get(
@@ -28,7 +26,7 @@ function App() {
         );
         setShowLoader(false);
         if (res.status === 200) {
-          setStudentID({ ...student, id: res.data.id });
+          setAdminID({ ...admin, id: res.data.id });
           setIsLoggedIn(true);
         } else {
           setIsLoggedIn(false);
@@ -49,15 +47,13 @@ function App() {
       },
     },
   });
-  let student = { id: studentID.id, setID: setStudentID };
-  // console.log(student)
-  // console.log(studentID)
+  let admin = { id: studentID.id, setID: setAdminID };
 
   return (
     <ThemeProvider theme={theme}>
       <setLogin.Provider value={setIsLoggedIn}>
         <setLoader.Provider value={setShowLoader}>
-          <studentId.Provider value={student}>
+          <studentId.Provider value={admin}>
             <div className="App">
               {IsLoggedIn ? <Home /> : <SignIn />}
               {showLoader && <BoxLoading color="#3a42bb" size="large" />}

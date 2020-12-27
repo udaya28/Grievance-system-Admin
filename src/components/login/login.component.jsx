@@ -21,17 +21,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  image: {
-    backgroundImage:
-      'url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1050&q=80")',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light'
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  },
   paper: {
     margin: theme.spacing(5, 4),
     display: 'flex',
@@ -55,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignIn = () => {
-  const [RollNumber, setRollNumber] = useState('');
+  const [UserName, setUserName] = useState('');
   const [Password, setPassword] = useState('');
   const [ValidationState, setValidationState] = useState(false);
   const [IsValid, setIsValid] = useState(true);
@@ -65,15 +54,15 @@ const SignIn = () => {
   const student = useContext(studentId);
 
   const handleSignIn = async () => {
-    console.log(RollNumber, Password);
+    // console.log(UserName, Password);
     setValidationState(true);
-    if (Password !== '' && RollNumber !== '') {
+    if (Password !== '' && UserName !== '') {
       try {
         setShowLoader(true);
         const res = await Axios.post(
-          'https://grievance-app-backend.herokuapp.com/student/login',
+          'https://grievance-app-backend.herokuapp.com/admin/login',
           {
-            data: { rollNumber: RollNumber, password: Password },
+            data: { userName: UserName, password: Password },
           }
         );
         setShowLoader(false);
@@ -101,12 +90,12 @@ const SignIn = () => {
     }
   };
 
-  const handleRollNumber = (e) => {
-    Password === '' && RollNumber === '' && setValidationState(false);
-    setRollNumber(e.target.value);
+  const handleUserName = (e) => {
+    Password === '' && UserName === '' && setValidationState(false);
+    setUserName(e.target.value);
   };
   const handlePassword = (e) => {
-    Password === '' && RollNumber === '' && setValidationState(false);
+    Password === '' && UserName === '' && setValidationState(false);
     setPassword(e.target.value);
   };
 
@@ -131,13 +120,13 @@ const SignIn = () => {
               label="Roll Number"
               name="email"
               autoComplete="email"
-              onInput={handleRollNumber}
-              value={RollNumber}
-              error={ValidationState && !RollNumber}
+              onInput={handleUserName}
+              value={UserName}
+              error={ValidationState && !UserName}
               helperText={
                 ValidationState &&
-                !RollNumber &&
-                'Roll number field is required'
+                !UserName &&
+                'User name field is required'
               }
               autoFocus
             />
@@ -160,7 +149,7 @@ const SignIn = () => {
             />
             {!IsValid && (
               <Typography color="error" variant="caption" align="left">
-                RollNumber or Password is Invalid
+                UserName or Password is Invalid
               </Typography>
             )}
             <Button

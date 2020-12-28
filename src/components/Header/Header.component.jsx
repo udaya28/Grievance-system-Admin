@@ -7,8 +7,9 @@ import './Header.styles.css';
 import AlertDialog from './../Dialog/Dialog.component';
 import { setLogin } from '../../context/context';
 import cookies from 'js-cookie';
-
+import Drawer from '@material-ui/core/Drawer';
 const Header = () => {
+  //logout
   const setIsLoggedIn = useContext(setLogin);
   const signOut = () => {
     handleOpenDialog();
@@ -19,14 +20,14 @@ const Header = () => {
   };
   //dialog
   const [OpenDialog, setOpenDialog] = useState(false);
-
   const handleOpenDialog = () => {
     setOpenDialog(true);
   };
-
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+  //drawer
+  const [openDrawer, setOpenDrawer] = useState(false)
 
   return (
     <AppBar position="fixed" color="primary">
@@ -38,7 +39,7 @@ const Header = () => {
           alignItems="center"
         >
           <Grid item>
-            <IconButton>
+            <IconButton onClick={()=>setOpenDrawer(true)}>
               <MenuIcon className="white" />
             </IconButton>
           </Grid>
@@ -62,7 +63,20 @@ const Header = () => {
         handleConfirm={doneSignOut}
         confirmButtonColorSecondary={true}
       />
+      <Drawer open={openDrawer} onClose={()=>setOpenDrawer(false)}>
+        <p>Lorem ipsum dolor sit amet consectetur, <br/>
+          adipisicing elit. Commodi, porro totam <br/>
+          quasi soluta veniam ut velit animi architecto<br/>
+           aliquam iusto aperiam eos? Exercitationem sit <br/>
+           magni officiis? Dignissimos ut consequuntur voluptas!<br/>
+           </p>
+      </Drawer>
     </AppBar>
   );
 };
+
+
+
 export default Header;
+
+

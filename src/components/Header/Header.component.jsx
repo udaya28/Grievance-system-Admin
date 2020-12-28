@@ -43,7 +43,7 @@ const Header = () => {
             </IconButton>
           </Grid>
           <Grid item>
-            <h3 className="mon">VCET</h3>
+            <h3 className="mon heading" >VCET</h3>
           </Grid>
           <Grid item>
             <Grid container direction="row" alignItems="center">

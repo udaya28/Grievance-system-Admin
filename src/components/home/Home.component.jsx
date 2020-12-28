@@ -1,10 +1,11 @@
+import { Grid} from '@material-ui/core';
 import { React } from 'react';
-
+import Header from '../Header/Header.component';
 const Home = () => {
   return (
-    <div>
-      <h1>hello home</h1>
-    </div>
+    <Grid container direction="column">
+      <Header/>
+    </Grid>
   );
 };
 

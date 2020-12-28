@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-import { setLogin, setLoader, studentId } from '../../context/context';
+import { setLogin, setLoader, adminId } from '../../context/context';
 import './login.styles.css';
 // import ImageHeader from '../imageHeader/ImageHeader';
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +51,7 @@ const SignIn = () => {
   const classes = useStyles();
   const setIsLoggedIn = useContext(setLogin);
   const setShowLoader = useContext(setLoader);
-  const student = useContext(studentId);
+  const admin = useContext(adminId);
 
   const handleSignIn = async () => {
     // console.log(UserName, Password);
@@ -68,10 +68,10 @@ const SignIn = () => {
         setShowLoader(false);
         // console.log(res);
         if (res.status === 200) {
-          student.setID({ ...student, id: res.data.id });
+          admin.setID({ ...admin, id: res.data.id });
           // console.log(res.data);
           let date = 1 / 48; //30 min
-          cookies.set('token', res.data.token, {
+          cookies.set('admin-token', res.data.token, {
             expires: date,
           });
           setIsLoggedIn(true);

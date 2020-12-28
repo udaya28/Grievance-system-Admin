@@ -4,7 +4,7 @@ import Home from './components/home/Home.component';
 import SignIn from './components/login/login.component';
 import cookie from 'js-cookie';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import { setLogin, setLoader, studentId } from './context/context';
+import { setLogin, setLoader, adminId } from './context/context';
 import Axios from 'axios';
 import { BoxLoading } from 'react-loadingg';
 function App() {
@@ -14,13 +14,13 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      if (cookie.get('token')) {
+      if (cookie.get('admin-token')) {
         setShowLoader(true);
         const res = await Axios.get(
           'https://grievance-app-backend.herokuapp.com/auth',
           {
             headers: {
-              token: cookie.get('token'),
+              token: cookie.get('admin-token'),
             },
           }
         );
@@ -53,12 +53,12 @@ function App() {
     <ThemeProvider theme={theme}>
       <setLogin.Provider value={setIsLoggedIn}>
         <setLoader.Provider value={setShowLoader}>
-          <studentId.Provider value={admin}>
+          <adminId.Provider value={admin}>
             <div className="App">
               {IsLoggedIn ? <Home /> : <SignIn />}
               {showLoader && <BoxLoading color="#3a42bb" size="large" />}
             </div>
-          </studentId.Provider>
+          </adminId.Provider>
         </setLoader.Provider>
       </setLogin.Provider>
     </ThemeProvider>

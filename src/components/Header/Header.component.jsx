@@ -37,7 +37,7 @@ const Header = () => {
       [theme.breakpoints.up('md')]: {
         marginTop: '64px',
       },
-      height: 'auto',
+      height: '100%',
     },
   }));
   const classes = useStyles();

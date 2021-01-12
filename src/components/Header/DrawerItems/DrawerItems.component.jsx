@@ -14,9 +14,13 @@ import Collapse from '@material-ui/core/Collapse';
 import GroupAddIcon from '@material-ui/icons/GroupAdd';
 import UpdateIcon from '@material-ui/icons/Update';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-const DrawerItems = () => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+const DrawerItems = ({setOpenDrawer}) => {
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [openDropDown, setOpenDropDown] = useState(true);
+  const handelClick = (index) =>{
+    setSelectedIndex(index);
+    setOpenDrawer(false)
+  }
   return (
     <div style={{ width: '250px' }}>
       <List>
@@ -24,7 +28,7 @@ const DrawerItems = () => {
           <ListItem
             button
             selected={selectedIndex === 0}
-            onClick={() => setSelectedIndex(0)}
+            onClick={() => handelClick(0)}
           >
             <ListItemIcon>
               <MoveToInboxIcon />
@@ -37,7 +41,7 @@ const DrawerItems = () => {
           <ListItem
             button
             selected={selectedIndex === 1}
-            onClick={() => setSelectedIndex(1)}
+            onClick={() => handelClick(1)}
           >
             <ListItemIcon>
               <AssessmentIcon />
@@ -50,7 +54,7 @@ const DrawerItems = () => {
           button
           selected={selectedIndex === 2}
           onClick={() => {
-            setSelectedIndex(2);
+            // handelClick(2);
             setOpenDropDown(!openDropDown);
           }}
         >
@@ -66,7 +70,7 @@ const DrawerItems = () => {
               <ListItem
                 button
                 selected={selectedIndex === 3}
-                onClick={() => setSelectedIndex(3)}
+                onClick={() => handelClick(3)}
               >
                 <ListItemIcon>
                   <GroupAddIcon />
@@ -78,7 +82,7 @@ const DrawerItems = () => {
               <ListItem
                 button
                 selected={selectedIndex === 4}
-                onClick={() => setSelectedIndex(4)}
+                onClick={() => handelClick(4)}
               >
                 <ListItemIcon>
                   <UpdateIcon />
@@ -91,7 +95,7 @@ const DrawerItems = () => {
               <ListItem
                 button
                 selected={selectedIndex === 5}
-                onClick={() => setSelectedIndex(5)}
+                onClick={() => handelClick(5)}
               >
                 <ListItemIcon>
                   <DeleteForeverIcon />
@@ -105,7 +109,7 @@ const DrawerItems = () => {
           <ListItem
             button
             selected={selectedIndex === 6}
-            onClick={() => setSelectedIndex(6)}
+            onClick={() => handelClick(6)}
           >
             <ListItemIcon>
               <AccountBoxIcon />

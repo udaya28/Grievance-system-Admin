@@ -86,7 +86,7 @@ const Header = () => {
           paper: classes.drawerPaper,
         }}
       >
-        <DrawerItems />
+        <DrawerItems setOpenDrawer={setOpenDrawer} />
       </Drawer>
     </AppBar>
   );

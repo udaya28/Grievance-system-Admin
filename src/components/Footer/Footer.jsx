@@ -12,7 +12,7 @@ const Footer = () => {
     >
       <Grid container justify="space-between" style={{ padding: '10px 5px' }}>
         <Grid item sm={6} xs={12}>
-          <Typography variant="caption">Copyright © 2020</Typography>
+          <Typography variant="caption">Copyright © 2021</Typography>
         </Grid>
         <Grid item sm={6} xs={12}>
           <Typography variant="caption">

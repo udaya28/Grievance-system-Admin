@@ -6,6 +6,7 @@ const FilterDrawer = () => {
   const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       marginTop: '64px', //56
+      marginBottom: '64px',
       [theme.breakpoints.up('md')]: {
         marginTop: '64px',
       },

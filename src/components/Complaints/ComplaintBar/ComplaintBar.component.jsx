@@ -5,7 +5,11 @@ import MenuIcon from '@material-ui/icons/Menu';
 const ComplaintBar = () => {
     return (
         <div>
-          
+          <AppBar position="fixed" style={{top:"60px"}}>
+              <Toolbar>
+                  hjhg
+              </Toolbar>
+          </AppBar>
         </div>
     )
 }

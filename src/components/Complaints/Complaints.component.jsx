@@ -10,10 +10,9 @@ const Complaints = () => {
   return (
     <div className="complaint-container">
       <div>
-        <h1>Complaints</h1>
+        {/* <h1>Complaints</h1> */}
         <ComplaintBar />
         <Feed />
-        
       </div>
       <div>
         <FilterDrawer />

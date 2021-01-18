@@ -1,0 +1,4 @@
+.complaint-container{
+    display: flex;
+    flex-direction: row;
+}

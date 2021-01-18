@@ -19,7 +19,7 @@ const Home = () => {
     <Router>
       <Grid container direction="column">
         <Header />
-        <div style={{ height: '50vh' }}></div>
+        <div style={{ marginTop:'64px' }}></div>
         <Switch>
           <Route exact path="/Grievance-system-Admin/create-student">
             <CreateStudent />

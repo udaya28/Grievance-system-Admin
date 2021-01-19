@@ -8,21 +8,24 @@ const FilterDrawer = () => {
       marginTop: '64px', //56
       marginBottom: '64px',
       [theme.breakpoints.up('md')]: {
-        marginTop: '64px',
+        
+        display:'block',
       },
+      display:'none',
       height: '100%',
-      width:'260px'
+      width:'300px'
+      
     },
   }));
   const classes = useStyles();
 
   return (
-    <div style={{ height: '100px', width: '200px',}}>
+    <div >
       <Drawer
         open
         anchor="right"
         variant="permanent"
-        style={{width:'100px'}}
+        // style={{width:'100px'}}
         classes={{
           paper: classes.drawerPaper,
         }}

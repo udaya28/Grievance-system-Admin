@@ -12,7 +12,7 @@ const FilterDrawer = () => {
         display:'block',
       },
       display:'none',
-      height: '100%',
+      height: 'auto',
       width:'240px'
       
     },

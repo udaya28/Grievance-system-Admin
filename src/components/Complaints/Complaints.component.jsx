@@ -11,11 +11,9 @@ const Complaints = () => {
     <Grid container className="complaint-container">
       <Grid item className="feed-container">
         <Grid container direction="column">
-          {/* <h1>hgfgjh</h1> */}
           <ComplaintBar setOpenFilter={setOpenFilter} />
           <Feed />
         </Grid>
-        {/* <h1>Complaints</h1> */}
       </Grid>
       <Grid item>
         <FilterDrawer setOpenFilter={setOpenFilter} openFilter={openFilter} />

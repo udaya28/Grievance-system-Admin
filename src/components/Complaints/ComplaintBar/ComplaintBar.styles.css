@@ -1,15 +1,16 @@
 .feed-bar{
-    top:'56px'!important;
+    top:64px !important;
 }
 
 @media only screen and (max-width: 600px) {
     .feed-bar{
-        top:'64px'!important;
+        top:56px !important;
     }
   }
   
   @media (min-width: 0px) and (orientation: landscape){
     .MuiToolbar-regular {
-        min-height:none;
+        min-height:none !important;
     }
   }
+

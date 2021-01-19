@@ -38,17 +38,6 @@ const FilterDrawer = () => {
         doloremque. Odit error facere autem temporibus eos. Aperiam placeat
         reprehenderit nostrum architecto repellendus debitis harum? Lorem ipsum
         dolor sit amet consectetur adipisicing elit. Natus necessitatibus
-        temporibus soluta veniam! Doloribus modi molestiae sit impedit! Et velit
-        numquam itaque, mollitia cumque debitis quidem magni earum nam id!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quae
-        dolorum! Animi magnam ex laboriosam praesentium laudantium ab commodi
-        deleniti. Dolores, reprehenderit voluptates nobis facilis quod porro
-        adipisci sit tenetur. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Architecto magni corrupti, quibusdam possimus assumenda laborum
-        doloremque. Odit error facere autem temporibus eos. Aperiam placeat
-        reprehenderit nostrum architecto repellendus debitis harum? Lorem ipsum
-        dolor sit amet consectetur adipisicing elit. Natus necessitatibus
-        temporibus soluta veniam! Doloribus modi molestiae sit impedit! Et velit
         numquam itaque, mollitia cumque debitis quidem magni earum nam id!
       </Drawer>
     </div>

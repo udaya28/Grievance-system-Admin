@@ -1,11 +1,11 @@
 .header-space{
-    margin-top:'60px' !important;
+    margin-top:60px !important;
     
 }
 
 @media only screen and (max-width: 600px) {
     .header-space{
-        margin-top:'64px' !important;
+        margin-top:56px !important;
     }
   }
   

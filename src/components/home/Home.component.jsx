@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core';
 import { React } from 'react';
+import './Home.styles.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,7 +20,7 @@ const Home = () => {
     <Router>
       <Grid container direction="column">
         <Header />
-        <div style={{ marginTop:'64px' }}></div>
+        <div style={{marginTop:"64px"}} className="header-space"></div>
         <Switch>
           <Route exact path="/Grievance-system-Admin/create-student">
             <CreateStudent />

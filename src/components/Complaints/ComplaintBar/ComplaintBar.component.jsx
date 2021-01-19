@@ -1,5 +1,6 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import './ComplaintBar.styles.css'
 import { IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 const ComplaintBar = () => {
@@ -7,7 +8,8 @@ const ComplaintBar = () => {
     <>
       <AppBar
         position="sticky"
-        style={{ top: '64px', }}
+        className="feed-bar"
+        
       >
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h6" noWrap>

@@ -33,7 +33,6 @@ const FilterDrawer = ({openFilter, setOpenFilter}) => {
         open
         anchor="right"
         variant="permanent"
-        // style={{width:'100px'}}
         classes={{
           paper: classes.drawerPaper,
         }}
@@ -41,7 +40,6 @@ const FilterDrawer = ({openFilter, setOpenFilter}) => {
         <DrawerItems/>
       </Drawer>
       <Drawer
-            // container={}
             variant="temporary"
             anchor={'right'}
             open={openFilter}

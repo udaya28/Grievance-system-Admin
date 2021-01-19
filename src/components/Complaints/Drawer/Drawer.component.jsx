@@ -7,13 +7,13 @@ const FilterDrawer = () => {
     drawerPaper: {
       marginTop: '64px', //56
       marginBottom: '64px',
-      [theme.breakpoints.up('md')]: {
+      [theme.breakpoints.up('sm')]: {
         
         display:'block',
       },
       display:'none',
       height: '100%',
-      width:'300px'
+      width:'240px'
       
     },
   }));

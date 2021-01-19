@@ -1,25 +1,24 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ComplaintBar from './ComplaintBar/ComplaintBar.component';
 import FilterDrawer from './Drawer/Drawer.component';
 import Feed from './Feed/Feed.component';
 import './Complaints.styles.css';
 import Grid from '@material-ui/core/Grid';
-// import { makeStyles, useTheme } from '@material-ui/core/styles';
 
 const Complaints = () => {
-  // const classes = useStyles();
+  const [openFilter, setOpenFilter] = useState(false)
   return (
     <Grid container className="complaint-container">
       <Grid item className="feed-container">
         <Grid container direction="column">
           {/* <h1>hgfgjh</h1> */}
-          <ComplaintBar />
+          <ComplaintBar setOpenFilter={setOpenFilter} />
           <Feed />
         </Grid>
         {/* <h1>Complaints</h1> */}
       </Grid>
       <Grid item>
-        <FilterDrawer />
+        <FilterDrawer setOpenFilter={setOpenFilter} openFilter={openFilter} />
       </Grid>
     </Grid>
   );

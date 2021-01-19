@@ -2,8 +2,9 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import './ComplaintBar.styles.css';
 import { IconButton, Toolbar, Typography } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-const ComplaintBar = () => {
+import SortIcon from '@material-ui/icons/Sort';
+const ComplaintBar = ({ setOpenFilter}) => {
+ 
   return (
     <AppBar position="sticky" className="feed-bar" >
       <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -14,10 +15,10 @@ const ComplaintBar = () => {
           color="inherit"
           aria-label="open drawer"
           edge="start"
-          // onClick={}
-          // className={classes.menuButton}
+          onClick={()=>setOpenFilter(true)}
+          className="filter-button"
         >
-          <MenuIcon />
+          <SortIcon />
         </IconButton>
       </Toolbar>
     </AppBar>

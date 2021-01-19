@@ -1,20 +1,28 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
 import { makeStyles } from '@material-ui/core';
-const FilterDrawer = () => {
+import DrawerItems from '../../Header/DrawerItems/DrawerItems.component'
+const FilterDrawer = ({openFilter, setOpenFilter}) => {
   const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       marginTop: '64px', //56
       marginBottom: '64px',
       [theme.breakpoints.up('sm')]: {
-        
+        // marginTop: '56px',
         display:'block',
       },
       display:'none',
       height: 'auto',
       width:'240px'
-      
+    },
+    drawerPaper1: {
+      marginTop: '64px', //56
+      height: '100%',
+      width:'240px',
+      [theme.breakpoints.down('sm')]: {
+        marginTop: '56px',
+        // display:'block',
+      }
     },
   }));
   const classes = useStyles();
@@ -30,16 +38,23 @@ const FilterDrawer = () => {
           paper: classes.drawerPaper,
         }}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quae
-        dolorum! Animi magnam ex laboriosam praesentium laudantium ab commodi
-        deleniti. Dolores, reprehenderit voluptates nobis facilis quod porro
-        adipisci sit tenetur. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Architecto magni corrupti, quibusdam possimus assumenda laborum
-        doloremque. Odit error facere autem temporibus eos. Aperiam placeat
-        reprehenderit nostrum architecto repellendus debitis harum? Lorem ipsum
-        dolor sit amet consectetur adipisicing elit. Natus necessitatibus
-        numquam itaque, mollitia cumque debitis quidem magni earum nam id!
+        <DrawerItems/>
       </Drawer>
+      <Drawer
+            // container={}
+            variant="temporary"
+            anchor={'right'}
+            open={openFilter}
+            onClose={()=>setOpenFilter(false)}
+            classes={{
+              paper: classes.drawerPaper1,
+            }}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+          >
+            <DrawerItems/>
+          </Drawer>
     </div>
   );
 };

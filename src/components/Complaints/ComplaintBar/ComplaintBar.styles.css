@@ -1,16 +1,23 @@
-.feed-bar{
-    top:64px !important;
+.feed-bar {
+  top: 64px !important;
 }
 
-@media only screen and (max-width: 600px) {
-    .feed-bar{
-        top:56px !important;
-    }
-  }
-  
-  @media (min-width: 0px) and (orientation: landscape){
-    .MuiToolbar-regular {
-        min-height:none !important;
-    }
+.filter-button {
+    display: none !important;
   }
 
+  
+@media only screen and (max-width: 600px) {
+  .feed-bar {
+    top: 56px !important;
+  }
+  .filter-button {
+    display: block !important;
+  }
+}
+
+@media (min-width: 0px) and (orientation: landscape) {
+  .MuiToolbar-regular {
+    min-height: none !important;
+  }
+}

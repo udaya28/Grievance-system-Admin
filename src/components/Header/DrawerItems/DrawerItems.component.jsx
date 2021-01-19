@@ -24,7 +24,7 @@ const DrawerItems = ({setOpenDrawer}) => {
   return (
     <div style={{ width: '250px' }}>
       <List>
-        <Link to="/Grievance-system-Admin/complaints">
+        <Link to="/Grievance-system-Admin/">
           <ListItem
             button
             selected={selectedIndex === 0}

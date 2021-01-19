@@ -37,12 +37,17 @@ const Home = () => {
           <Route exact path="/Grievance-system-Admin/dashboard">
             <Dashboard />
           </Route>
-          <Redirect
+          {/* <Redirect
             exact
             from="/Grievance-system-Admin/"
             to="/Grievance-system-Admin/complaints"
-          />
-          <Route exact path="/Grievance-system-Admin/complaints">
+          /> */}
+           {/* <Redirect
+            exact
+            from="/Grievance-system-Admin/"
+            to="/Grievance-system-Admin/"
+          />  */}
+          <Route  path="/Grievance-system-Admin/">
             <Complaints />
           </Route>
         </Switch>

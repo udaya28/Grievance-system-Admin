@@ -18,6 +18,6 @@
 
 @media (min-width: 0px) and (orientation: landscape) {
   .MuiToolbar-regular {
-    min-height: none !important;
+    min-height: 64px !important;
   }
 }

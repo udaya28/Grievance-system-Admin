@@ -1,6 +1,7 @@
 import { Grid } from '@material-ui/core';
 import { React } from 'react';
 import './Home.styles.css';
+import Axios from 'axios';
 import {
   BrowserRouter as Router,
   Switch,

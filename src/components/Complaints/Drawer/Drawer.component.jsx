@@ -1,34 +1,34 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core';
-import DrawerItems from '../../Header/DrawerItems/DrawerItems.component'
-const FilterDrawer = ({openFilter, setOpenFilter}) => {
+import FilterItems from './FilterItems/FilterItems.component'
+const FilterDrawer = ({ openFilter, setOpenFilter }) => {
   const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       marginTop: '64px', //56
       marginBottom: '64px',
       [theme.breakpoints.up('sm')]: {
         // marginTop: '56px',
-        display:'block',
+        display: 'block',
       },
-      display:'none',
+      display: 'none',
       height: 'auto',
-      width:'240px'
+      width: '240px',
     },
     drawerPaper1: {
       marginTop: '64px', //56
       height: '100%',
-      width:'240px',
+      width: '240px',
       [theme.breakpoints.down('sm')]: {
         marginTop: '56px',
         // display:'block',
-      }
+      },
     },
   }));
   const classes = useStyles();
 
   return (
-    <div >
+    <div>
       <Drawer
         open
         anchor="right"
@@ -37,22 +37,22 @@ const FilterDrawer = ({openFilter, setOpenFilter}) => {
           paper: classes.drawerPaper,
         }}
       >
-        <DrawerItems/>
+        <FilterItems/>
       </Drawer>
       <Drawer
-            variant="temporary"
-            anchor={'right'}
-            open={openFilter}
-            onClose={()=>setOpenFilter(false)}
-            classes={{
-              paper: classes.drawerPaper1,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            <DrawerItems/>
-          </Drawer>
+        variant="temporary"
+        anchor={'right'}
+        open={openFilter}
+        onClose={() => setOpenFilter(false)}
+        classes={{
+          paper: classes.drawerPaper1,
+        }}
+        ModalProps={{
+          keepMounted: true,
+        }}
+      >
+        <FilterItems />
+      </Drawer>
     </div>
   );
 };

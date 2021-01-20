@@ -22,7 +22,7 @@ const DrawerItems = ({setOpenDrawer}) => {
     setOpenDrawer(false)
   }
   return (
-    <div style={{ width: '250px' }}>
+    <div style={{ width: '240px' }}>
       <List>
         <Link to="/Grievance-system-Admin/">
           <ListItem

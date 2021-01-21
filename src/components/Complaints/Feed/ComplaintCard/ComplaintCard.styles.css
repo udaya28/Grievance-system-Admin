@@ -34,8 +34,8 @@
   } */
   
   .activity-container {
-    /* height: 100%;
-      width: 100%; */
+    height: 100%;
+      width: 100%;
     flex-direction: row;
     /* border-left: 4px solid #00b627; */
     border-radius: 4px;

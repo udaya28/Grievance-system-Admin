@@ -36,10 +36,11 @@ const ComplaintCard = ({ data, handleClickOpen }) => {
   };
 
   return (
-    <Grid item sm={12} md={6} style={{ width: '100%', height: '100%' }} >
+    <Grid item xs={12} sm={12} md={6}  >
       <div
+      style={{ width: '100%', height: '100%' }}
         onClick={() => {
-          handleClickOpen(data, getDate(timeStamp));
+          // handleClickOpen(data, getDate(timeStamp));
         }}
       >
         <Grid container className={`activity-container + ${statusClass}`}>

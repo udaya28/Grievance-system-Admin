@@ -9,7 +9,6 @@ import {allComplaintsContext} from '../../context/context'
 const Complaints = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const allComplaints = useContext(allComplaintsContext)
-  console.log(allComplaints)
   return (
     <Grid container className="complaint-container">
       <Grid item className="feed-container">

@@ -1,0 +1,39 @@
+.dialogHeading {
+    text-align: left;
+    font-size: large !important;
+    margin: 5px 0px;
+  }
+  
+  .action {
+    justify-content: space-between !important;
+  }
+  
+  .green1 {
+    border-color: #00b627 !important;
+    border-top: 2px solid #00b627 !important;
+    border-bottom: 2px solid #00b627 !important;
+  }
+  .green1-col {
+    color: #00b627;
+  }
+  
+  .red1-col {
+    color: #d63535;
+  }
+  
+  .yellow1-col {
+    color: #fce300;
+  }
+  
+  .red1 {
+    border-color: #d63535 !important;
+    border-top: 2px solid #d63535 !important;
+    border-bottom: 2px solid #d63535 !important;
+  }
+  
+  .yellow1 {
+    border-color: #fce300 !important;
+    border-top: 2px solid #fce300 !important;
+    border-bottom: 2px solid #fce300 !important;
+  }
+  

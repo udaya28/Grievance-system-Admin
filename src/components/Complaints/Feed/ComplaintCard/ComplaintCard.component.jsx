@@ -3,7 +3,7 @@ import './ComplaintCard.styles.css';
 import Grid from '@material-ui/core/Grid';
 
 const ComplaintCard = ({ data, handleClickOpen }) => {
-  console.log(data);
+  // console.log(data);
   const { title, timeStamp, status } = data;
   let statusClass;
   if (status === 'seen') {
@@ -40,7 +40,7 @@ const ComplaintCard = ({ data, handleClickOpen }) => {
       <div
       style={{ width: '100%', height: '100%' }}
         onClick={() => {
-          // handleClickOpen(data, getDate(timeStamp));
+          handleClickOpen(data, getDate(timeStamp));
         }}
       >
         <Grid container className={`activity-container + ${statusClass}`}>

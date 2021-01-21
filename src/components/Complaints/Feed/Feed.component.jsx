@@ -19,7 +19,11 @@ const Feed = ({ allComplaints }) => {
         {/* <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p> */}
 
         {allComplaints.map((data, index) => (
-          <ComplaintCard data={data} key={index} handleClickOpen={handleClickOpen} />
+          <ComplaintCard
+            data={data}
+            key={index}
+            handleClickOpen={handleClickOpen}
+          />
         ))}
       </Grid>
       <FeedDialog

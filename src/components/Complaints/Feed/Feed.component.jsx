@@ -1,5 +1,6 @@
 import React from 'react';
 import ComplaintCard from './ComplaintCard/ComplaintCard.component';
+import Grid from '@material-ui/core/Grid';
 const Feed = ({ allComplaints }) => {
   const test = [
     {
@@ -20,12 +21,12 @@ const Feed = ({ allComplaints }) => {
     },
   ];
   return (
-    <div>
-      <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p>
-      <p>
-        {test.map((data)=><ComplaintCard data={data}/>)}
-      </p>
-    </div>
+    <Grid container spacing={1} style={{ padding: '10px 5px 30px 5px' }}>
+      {/* <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p> */}
+      
+        {allComplaints.map((data)=><ComplaintCard data={data}/>)}
+      
+    </Grid>
   );
 };
 

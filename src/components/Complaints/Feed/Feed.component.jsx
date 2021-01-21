@@ -1,11 +1,32 @@
-import React from 'react'
+import React from 'react';
+import ComplaintCard from './ComplaintCard/ComplaintCard.component';
+const Feed = ({ allComplaints }) => {
+  const test = [
+    {
+      category: 'college',
+      complaint: 'second official complaint from web site ',
+      createdAt: '2020-12-19T14:30:08.972Z',
+      departmentName: 'CSE',
+      gender: 'male',
+      jointYear: 2019,
+      response: '',
+      status: 'unseen',
+      studentId: '5fd6f2bac6d1fa27dc5cea11',
+      timeStamp: 'Sat Dec 19 2020 20:00:06 GMT+0530 (India Standard Time)',
+      title: 'second complain',
+      updatedAt: '2020-12-19T14:30:08.972Z',
+      __v: 0,
+      _id: '5fde0e70d7b2140017784c5c',
+    },
+  ];
+  return (
+    <div>
+      <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p>
+      <p>
+        {test.map((data)=><ComplaintCard data={data}/>)}
+      </p>
+    </div>
+  );
+};
 
-const Feed = () => {
-    return (
-        <div >
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae assumenda quasi voluptates similique nostrum iure repellat provident a. Recusandae numquam ex earum molestias odit quibusdam laboriosam natus iusto nam atque! Lorem ipsum dolor sit amet consectetur adipisicing elit. Id doloribus accusantium molestias officiis repudiandae, consequuntur omnis sint vel similique iure tempora corporis voluptatibus incidunt sed sequi asperiores, quibusdam voluptatem quod? Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda magni dolore, sequi quaerat totam ipsa nostrum eius repellat distinctio obcaecati culpa temporibus vel placeat recusandae, deserunt, saepe aliquam explicabo iste. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique quae vero ad aperiam sequi in eius reiciendis facilis atque ea corrupti nostrum ab impedit, aut recusandae voluptatum quam porro omnis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nam vel, at, rerum, autem tenetur aspernatur doloremque placeat impedit vitae dignissimos suscipit error. Consectetur iure, pariatur veniam eaque nisi cupiditate.</p>
-        </div>
-    )
-}
-
-export default Feed
+export default Feed;

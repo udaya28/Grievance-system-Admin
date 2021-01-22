@@ -50,7 +50,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
               <FormControl style={{ width: '100%',margin:"10px 0px" }}>
                 <TextField
                   id="outlined-basic"
-                  label="Response"
+                  label="Make Response"
                   variant="outlined"
                   multiline
                   rows={8}

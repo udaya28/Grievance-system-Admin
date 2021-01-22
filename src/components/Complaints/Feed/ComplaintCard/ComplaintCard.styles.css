@@ -12,6 +12,10 @@
     margin-left: 15px;
     font-weight: 600;
   }
+
+  .activity-title::first-letter{
+    text-transform: uppercase;
+  }
   .time-stamp {
     margin: 0px;
     padding: 5px 0px;

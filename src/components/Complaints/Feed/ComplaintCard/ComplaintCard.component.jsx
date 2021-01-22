@@ -36,7 +36,7 @@ const ComplaintCard = ({ data, handleClickOpen }) => {
   };
 
   return (
-    <Grid item xs={12} sm={12} md={6}  >
+    <Grid item xs={12} sm={12} md={6} style={{height:"100px"}} >
       <div
       style={{ width: '100%', height: '100%' }}
         onClick={() => {

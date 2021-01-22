@@ -1,10 +1,15 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Grid from '@material-ui/core/Grid';
+import SendIcon from '@material-ui/icons/Send';
 import './FeedDialog.styles.css';
 const FeedDialog = ({ open, handleClose, data }) => {
   let statusClass;
@@ -17,12 +22,16 @@ const FeedDialog = ({ open, handleClose, data }) => {
   } else {
     statusClass = '';
   }
-
+  const { innerWidth: width, innerHeight: height } = window;
+  console.log(width,height)
   return (
     <div>
       <Dialog
         open={open}
         onClose={handleClose}
+        maxWidth="md"
+        fullWidth={true}
+        fullScreen={width<=600 && true}
         scroll="paper"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
@@ -34,33 +43,65 @@ const FeedDialog = ({ open, handleClose, data }) => {
         </DialogTitle>
         <DialogContent dividers={true} className={statusClass}>
           <DialogContentText id="scroll-dialog-description">
-            <h1 className="dialogHeading">Complaint Made</h1>
+            <h4 className="dialog-sub-heading">Complaint Made</h4>
             <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
+            <h4 className="dialog-sub-heading">Make Response</h4>
+            <FormGroup className="form-group">
+              <FormControl style={{ width: '100%',margin:"10px 0px" }}>
+                <TextField
+                  id="outlined-basic"
+                  label="Response"
+                  variant="outlined"
+                  multiline
+                  rows={8}
+                  // value={data.complaint}
+                />
+              </FormControl>
+              <Grid container justify="flex-end">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  endIcon={<SendIcon />}
+                  // onClick={handleFormSubmit}
+                >
+                  Send
+                </Button>
+              </Grid>
+            </FormGroup>
 
             {data.response !== ''
               ? [
-                  <h1 className="dialogHeading">Response</h1>,
+                  <h4>Response</h4>,
                   <p style={{ textAlign: 'justify' }}>{data.complaint}</p>,
                 ]
               : null}
             {/* [<h1 className="dialogHeading">No response received from committee </h1>] */}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions className="action">
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
             <p
               style={{
                 textAlign: 'left',
                 fontSize: 'small',
-                margin: '15px 0px 0px',
+                margin: '0px 0px 0px 10px',
                 fontWeight: 'bolder',
               }}
               className={`${statusClass}-col`}
             >
-              {data.status} by committee
+              {data.status}
             </p>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions className="action">
-          <p style={{ fontSize: 'small' }} className="time-stamp">
-            {data.timeStr}
-          </p>
+            <p style={{ fontSize: 'small' }} className="time-stamp">
+              {data.timeStr}
+            </p>
+          </div>
+
           <Button onClick={handleClose} color="primary">
             Close
           </Button>

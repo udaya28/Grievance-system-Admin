@@ -43,6 +43,10 @@ const FeedDialog = ({ open, handleClose, data }) => {
         </DialogTitle>
         <DialogContent dividers={true}>
           <DialogContentText>
+            <h4 className="dialog-sub-heading">Student Details</h4>
+            <p><b>Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;</b><i>{data.departmentName}</i></p>
+            <p><b>Academic Year &nbsp;: &nbsp;</b><i>{data.jointYear} - {data.jointYear + 4}</i></p>
+            <p><b>Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;</b><i style={{textTransform:"capitalize"}}>{data.gender}</i></p>
             <h4 className="dialog-sub-heading">Complaint Made</h4>
             <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
 

@@ -17,7 +17,6 @@ const Feed = ({ allComplaints }) => {
     <>
       <Grid container spacing={1} style={{ padding: '10px 5px 30px 5px' }}>
         {/* <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p> */}
-
         {allComplaints.map((data, index) => (
           <ComplaintCard
             data={data}

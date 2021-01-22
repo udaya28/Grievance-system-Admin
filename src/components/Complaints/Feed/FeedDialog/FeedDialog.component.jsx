@@ -43,20 +43,46 @@ const FeedDialog = ({ open, handleClose, data }) => {
         </DialogTitle>
         <DialogContent dividers={true}>
           <DialogContentText>
-            <h4 className="dialog-sub-heading">Student Details</h4>
-            <p><b>Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;</b><i>{data.departmentName}</i></p>
-            <p><b>Academic Year &nbsp;: &nbsp;</b><i>{data.jointYear} - {data.jointYear + 4}</i></p>
-            <p><b>Gender &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;</b><i style={{textTransform:"capitalize"}}>{data.gender}</i></p>
-            <h4 className="dialog-sub-heading">Complaint Made</h4>
+            <h1 className="dialogHeading">Student Details</h1>
+            <p>
+              <b>
+                Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                : &nbsp;
+              </b>
+              <i style={{ textTransform: 'capitalize' }}>{data.category}</i>
+            </p>
+            <p>
+              <b>
+                Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;
+              </b>
+              <i>{data.departmentName}</i>
+            </p>
+            <p>
+              <b>Academic Year &nbsp;: &nbsp;</b>
+              <i>
+                {data.jointYear} - {data.jointYear + 4}
+              </i>
+            </p>
+            <p>
+              <b>
+                Gender
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                : &nbsp;
+              </b>
+              <i style={{ textTransform: 'capitalize' }}>{data.gender}</i>
+            </p>
+            <h1 className="dialogHeading">Complaint Details</h1>
+            <h4 className="dialog-sub-heading">Title</h4>
+            <p>{data.title}</p>
+            <h4 className="dialog-sub-heading">Complaint</h4>
             <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
-
             {data.response !== ''
               ? [
-                  <h4 className="dialog-sub-heading">Response Made</h4>,
+                  <h4 className="dialog-sub-heading">Response</h4>,
                   <p style={{ textAlign: 'justify' }}>{data.response}</p>,
                 ]
               : [
-                  <h4 className="dialog-sub-heading">Make Response</h4>,
+                  <h4 className="dialog-sub-heading">Response</h4>,
                   <FormGroup className="form-group">
                     <FormControl style={{ width: '100%', margin: '10px 0px' }}>
                       <TextField

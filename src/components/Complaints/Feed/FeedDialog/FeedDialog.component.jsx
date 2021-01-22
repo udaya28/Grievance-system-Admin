@@ -30,19 +30,19 @@ const FeedDialog = ({ open, handleClose, data }) => {
         open={open}
         onClose={handleClose}
         maxWidth="md"
-        fullWidth={true}
+        fullWidth={true}  
         fullScreen={width<=600 && true}
         scroll="paper"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle id="scroll-dialog-title">
+        <DialogTitle >
           <h1 className="dialogHeading" style={{ margin: '0px' }}>
             {data.title}
           </h1>
         </DialogTitle>
-        <DialogContent dividers={true} className={statusClass}>
-          <DialogContentText id="scroll-dialog-description">
+        <DialogContent dividers={true} >
+          <DialogContentText >
             <h4 className="dialog-sub-heading">Complaint Made</h4>
             <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
             <h4 className="dialog-sub-heading">Make Response</h4>

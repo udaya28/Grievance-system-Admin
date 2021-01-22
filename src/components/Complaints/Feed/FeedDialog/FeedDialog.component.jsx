@@ -23,58 +23,59 @@ const FeedDialog = ({ open, handleClose, data }) => {
     statusClass = '';
   }
   const { innerWidth: width, innerHeight: height } = window;
-  console.log(width,height)
+  console.log(width, height);
   return (
     <div>
       <Dialog
         open={open}
         onClose={handleClose}
         maxWidth="md"
-        fullWidth={true}  
-        fullScreen={width<=600 && true}
+        fullWidth={true}
+        fullScreen={width <= 600 && true}
         scroll="paper"
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
       >
-        <DialogTitle >
+        <DialogTitle>
           <h1 className="dialogHeading" style={{ margin: '0px' }}>
             {data.title}
           </h1>
         </DialogTitle>
-        <DialogContent dividers={true} >
-          <DialogContentText >
+        <DialogContent dividers={true}>
+          <DialogContentText>
             <h4 className="dialog-sub-heading">Complaint Made</h4>
             <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
-            <h4 className="dialog-sub-heading">Make Response</h4>
-            <FormGroup className="form-group">
-              <FormControl style={{ width: '100%',margin:"10px 0px" }}>
-                <TextField
-                  id="outlined-basic"
-                  label="Make Response"
-                  variant="outlined"
-                  multiline
-                  rows={8}
-                  // value={data.complaint}
-                />
-              </FormControl>
-              <Grid container justify="flex-end">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  endIcon={<SendIcon />}
-                  // onClick={handleFormSubmit}
-                >
-                  Send
-                </Button>
-              </Grid>
-            </FormGroup>
 
             {data.response !== ''
               ? [
-                  <h4>Response</h4>,
-                  <p style={{ textAlign: 'justify' }}>{data.complaint}</p>,
+                  <h4 className="dialog-sub-heading">Response Made</h4>,
+                  <p style={{ textAlign: 'justify' }}>{data.response}</p>,
                 ]
-              : null}
+              : [
+                  <h4 className="dialog-sub-heading">Make Response</h4>,
+                  <FormGroup className="form-group">
+                    <FormControl style={{ width: '100%', margin: '10px 0px' }}>
+                      <TextField
+                        id="outlined-basic"
+                        label="Make Response"
+                        variant="outlined"
+                        multiline
+                        rows={8}
+                        // value={data.complaint}
+                      />
+                    </FormControl>
+                    <Grid container justify="flex-end">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        endIcon={<SendIcon />}
+                        // onClick={handleFormSubmit}
+                      >
+                        Send
+                      </Button>
+                    </Grid>
+                  </FormGroup>,
+                ]}
             {/* [<h1 className="dialogHeading">No response received from committee </h1>] */}
           </DialogContentText>
         </DialogContent>
@@ -92,6 +93,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
                 fontSize: 'small',
                 margin: '0px 0px 0px 10px',
                 fontWeight: 'bolder',
+                textTransform: 'uppercase',
               }}
               className={`${statusClass}-col`}
             >

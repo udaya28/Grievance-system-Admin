@@ -5,7 +5,7 @@ import './Header.styles.css';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Button from '@material-ui/core/Button';
-import AlertDialog from './../Dialog/Dialog.component';
+import AlertDialog from '../AlertDialog/AlertDialog.component';
 import cookies from 'js-cookie';
 import Drawer from '@material-ui/core/Drawer';
 import DrawerItems from './DrawerItems/DrawerItems.component';

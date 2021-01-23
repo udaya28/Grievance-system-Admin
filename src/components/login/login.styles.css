@@ -1,5 +1,5 @@
 .login-box {
-  height: 100% !important;
+  height: auto;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;

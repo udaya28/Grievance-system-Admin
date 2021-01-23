@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
+    // marginTop:"100px"
+    flexDirection: 'row',
   },
   paper: {
     margin: theme.spacing(5, 4),
@@ -100,72 +102,89 @@ const SignIn = () => {
   };
 
   return (
-    <Grid container component="main" className={classes.root}>
-      <CssBaseline />
-      <Grid item xs={12} sm={8} md={5} className="login-box" component={Paper}>
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h6">
-            Sign in
-          </Typography>
-          <FormControl className={classes.form} validate="true">
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="User Name"
-              name="email"
-              autoComplete="email"
-              onInput={handleUserName}
-              value={UserName}
-              error={ValidationState && !UserName}
-              helperText={
-                ValidationState &&
-                !UserName &&
-                'User name field is required'
-              }
-              autoFocus
-            />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              onInput={handlePassword}
-              value={Password}
-              error={ValidationState && !Password}
-              helperText={
-                ValidationState && !Password && 'Password field is required'
-              }
-              autoComplete="current-password"
-            />
-            {!IsValid && (
-              <Typography color="error" variant="caption" align="left">
-                UserName or Password is Invalid
-              </Typography>
-            )}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={handleSignIn}
+    <>
+      <Grid container component="main" className={classes.root}>
+        <CssBaseline />
+
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={5}
+          className="login-box"
+          component={Paper}
+        >
+          <div className={classes.paper}>
+            <Typography
+              component="h1"
+              variant="h5"
+              style={{ marginBottom: '30px' }}
             >
-              Sign In
-            </Button>
-          </FormControl>
-        </div>
+              <b>
+                <p>Online Grievance System</p>
+              </b>
+            </Typography>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h6">
+              Admin Login
+            </Typography>
+            <FormControl className={classes.form} validate="true">
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="User Name"
+                name="email"
+                autoComplete="email"
+                onInput={handleUserName}
+                value={UserName}
+                error={ValidationState && !UserName}
+                helperText={
+                  ValidationState && !UserName && 'User name field is required'
+                }
+                autoFocus
+              />
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                onInput={handlePassword}
+                value={Password}
+                error={ValidationState && !Password}
+                helperText={
+                  ValidationState && !Password && 'Password field is required'
+                }
+                autoComplete="current-password"
+              />
+              {!IsValid && (
+                <Typography color="error" variant="caption" align="left">
+                  UserName or Password is Invalid
+                </Typography>
+              )}
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                onClick={handleSignIn}
+              >
+                Sign In
+              </Button>
+            </FormControl>
+          </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };
 

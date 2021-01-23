@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from '@material-ui/core/FormControl';
@@ -22,8 +22,18 @@ const FeedDialog = ({ open, handleClose, data }) => {
   } else {
     statusClass = '';
   }
-  const { innerWidth: width, innerHeight: height } = window;
-  console.log(width, height);
+  const { innerWidth: width} = window;
+  const [response, setResponse] = useState('')
+  const [validationState, setValidationState] = useState(false)
+  const handleResponse = (e)=>{
+      setResponse(e.target.value)
+  }
+  const handleSubmit = ()=>{
+    setValidationState(true);
+    if(response !== ''){
+      console.log(response)
+    }
+  }
   return (
     <div>
       <Dialog
@@ -91,7 +101,10 @@ const FeedDialog = ({ open, handleClose, data }) => {
                         variant="outlined"
                         multiline
                         rows={8}
-                        // value={data.complaint}
+                        helperText='Make Response for the Complaint'
+                        onInput={handleResponse}
+                        error={validationState && response === ''}
+                        value={response}
                       />
                     </FormControl>
                     <Grid container justify="flex-end">
@@ -99,7 +112,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
                         variant="contained"
                         color="primary"
                         endIcon={<SendIcon />}
-                        // onClick={handleFormSubmit}
+                        onClick={()=>handleSubmit()}
                       >
                         Send
                       </Button>

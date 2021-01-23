@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-    // marginTop:"100px"
     flexDirection: 'row',
   },
   paper: {

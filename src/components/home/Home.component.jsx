@@ -17,15 +17,15 @@ import Profile from '../Profile/Profile.component';
 import CreateStudent from '../Student/CreateStudent/CreateStudent.component';
 import UpdateStudent from '../Student/UpdateStudent/UpdateStudent.component';
 import DeleteStudent from '../Student/DeleteStudent/DeleteStudent.component';
-import { allComplaintsContext } from '../../context/context';
+import { allComplaintsContext, refreshComplaintsContext } from '../../context/context';
 const Home = () => {
   const [allComplaints, setAllComplaints] = useState([]);
 
   useEffect(() => {
-    getComplaint();
+    refreshComplaints();
     return () => {};
   }, []);
-  const getComplaint = async () => {
+  const refreshComplaints = async () => {
     const complaint = await Axios.get(
       `https://grievance-app-backend.herokuapp.com/admin/complaint`,
       {
@@ -41,44 +41,46 @@ const Home = () => {
   };
   return (
     <allComplaintsContext.Provider value={allComplaints}>
-      <Router>
-        <Grid container direction="column">
-          <Header />
-          <div style={{ marginTop: '64px' }} className="header-space"></div>
-          <Switch>
-            <Route exact path="/Grievance-system-Admin/create-student">
-              <CreateStudent />
-            </Route>
-            <Route exact path="/Grievance-system-Admin/update-student">
-              <UpdateStudent />
-            </Route>
-            <Route exact path="/Grievance-system-Admin/delete-student">
-              <DeleteStudent />
-            </Route>
-            <Route exact path="/Grievance-system-Admin/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/Grievance-system-Admin/dashboard">
-              <Dashboard />
-            </Route>
-            {/* <Redirect
+      <refreshComplaintsContext.Provider value={refreshComplaints}>
+        <Router>
+          <Grid container direction="column">
+            <Header />
+            <div style={{ marginTop: '64px' }} className="header-space"></div>
+            <Switch>
+              <Route exact path="/Grievance-system-Admin/create-student">
+                <CreateStudent />
+              </Route>
+              <Route exact path="/Grievance-system-Admin/update-student">
+                <UpdateStudent />
+              </Route>
+              <Route exact path="/Grievance-system-Admin/delete-student">
+                <DeleteStudent />
+              </Route>
+              <Route exact path="/Grievance-system-Admin/profile">
+                <Profile />
+              </Route>
+              <Route exact path="/Grievance-system-Admin/dashboard">
+                <Dashboard />
+              </Route>
+              {/* <Redirect
             exact
             from="/Grievance-system-Admin/"
             to="/Grievance-system-Admin/complaints"
           /> */}
-            {/* <Redirect
+              {/* <Redirect
             exact
             from="/Grievance-system-Admin/"
             to="/Grievance-system-Admin/"
           />  */}
-            <Route path="/Grievance-system-Admin/">
-              <Complaints />
-            </Route>
-          </Switch>
-          {/* <div style={{ height: '50vh' }}></div> */}
-          <Footer />
-        </Grid>
-      </Router>
+              <Route path="/Grievance-system-Admin/">
+                <Complaints />
+              </Route>
+            </Switch>
+            {/* <div style={{ height: '50vh' }}></div> */}
+            <Footer />
+          </Grid>
+        </Router>
+      </refreshComplaintsContext.Provider>
     </allComplaintsContext.Provider>
   );
 };

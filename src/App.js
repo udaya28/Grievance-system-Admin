@@ -63,7 +63,6 @@ function App() {
                   style={{ position: 'fixed', margin: 'auto', inset: '0px' }}
                 />
               )}
-
               {/* margin: auto; position: absolute; inset: 0px; */}
             </div>
           </adminId.Provider>

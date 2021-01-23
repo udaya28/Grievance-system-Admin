@@ -15,7 +15,7 @@ import AlertDialog from '../../../AlertDialog/AlertDialog.component';
 import Axios from 'axios';
 import cookie from 'js-cookie';
 import Snackbar from '@material-ui/core/Snackbar';
-import { setLoader } from './../../../../context/context';
+import { setLoader,refreshComplaintsContext } from './../../../../context/context';
 const FeedDialog = ({ open, handleClose, data }) => {
   let statusClass;
   if (data.status === 'seen') {
@@ -33,6 +33,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [openSnackBar, setOpenSnackBar] = useState(false);
   const setShowLoader = useContext(setLoader);
+  const refreshComplaints = useContext(refreshComplaintsContext);
   const handleResponse = (e) => {
     setResponse(e.target.value);
   };
@@ -71,10 +72,12 @@ const FeedDialog = ({ open, handleClose, data }) => {
           setShowLoader(false);
           console.log('posted');
           setOpenSnackBar(true);
+          refreshComplaints();
         } else {
           setShowLoader(false);
           console.log('failed to post');
         }
+        setValidationState(false);
       } catch (err) {
         console.log(err);
       }

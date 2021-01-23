@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from '@material-ui/core/FormControl';
@@ -22,23 +22,23 @@ const FeedDialog = ({ open, handleClose, data }) => {
   } else {
     statusClass = '';
   }
-  const { innerWidth: width} = window;
-  const [response, setResponse] = useState('')
-  const [validationState, setValidationState] = useState(false)
-  const handleResponse = (e)=>{
-      setResponse(e.target.value)
-  }
-  const handleSubmit = ()=>{
+  const { innerWidth: width } = window;
+  const [response, setResponse] = useState('');
+  const [validationState, setValidationState] = useState(false);
+  const handleResponse = (e) => {
+    setResponse(e.target.value);
+  };
+  const handleSubmit = () => {
     setValidationState(true);
-    if(response !== ''){
-      console.log(response)
+    if (response !== '') {
+      console.log(response);
     }
-  }
+  };
   return (
     <div>
       <Dialog
         open={open}
-        onClose={handleClose}
+        onClose={() => handleClose()}
         maxWidth="md"
         fullWidth={true}
         fullScreen={width <= 600 && true}
@@ -101,7 +101,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
                         variant="outlined"
                         multiline
                         rows={8}
-                        helperText='Make Response for the Complaint'
+                        helperText="Make Response for the Complaint"
                         onInput={handleResponse}
                         error={validationState && response === ''}
                         value={response}
@@ -112,7 +112,7 @@ const FeedDialog = ({ open, handleClose, data }) => {
                         variant="contained"
                         color="primary"
                         endIcon={<SendIcon />}
-                        onClick={()=>handleSubmit()}
+                        onClick={() => handleSubmit()}
                       >
                         Send
                       </Button>
@@ -147,7 +147,14 @@ const FeedDialog = ({ open, handleClose, data }) => {
             </p>
           </div>
 
-          <Button onClick={handleClose} color="primary">
+          <Button
+            onClick={() => {
+              setValidationState(false);
+              setResponse('');
+              handleClose();
+            }}
+            color="primary"
+          >
             Close
           </Button>
         </DialogActions>

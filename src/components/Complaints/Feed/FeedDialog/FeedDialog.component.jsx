@@ -11,6 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import SendIcon from '@material-ui/icons/Send';
 import './FeedDialog.styles.css';
+import AlertDialog from '../../../AlertDialog/AlertDialog.component';
 const FeedDialog = ({ open, handleClose, data }) => {
   let statusClass;
   if (data.status === 'seen') {
@@ -25,15 +26,22 @@ const FeedDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [response, setResponse] = useState('');
   const [validationState, setValidationState] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false)
   const handleResponse = (e) => {
     setResponse(e.target.value);
   };
   const handleSubmit = () => {
     setValidationState(true);
     if (response !== '') {
-      console.log(response);
+      setOpenDialog(true)
     }
   };
+  const confirmSubmit = ()=>{
+    console.log(response)
+    setOpenDialog(false)
+    setResponse('')
+    handleClose();
+  }
   return (
     <div>
       <Dialog
@@ -159,6 +167,14 @@ const FeedDialog = ({ open, handleClose, data }) => {
           </Button>
         </DialogActions>
       </Dialog>
+      <AlertDialog
+      SetOpen={openDialog}
+      handleClose={()=>setOpenDialog(false)}
+      title="Confirm"
+      content="Once submitted you can't change or delete your complaint."
+      handleConfirm={confirmSubmit}
+      confirmButtonColorSecondary={false}
+      />
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { Grid } from '@material-ui/core';
 import './Home.styles.css';
 import Axios from 'axios';
@@ -17,15 +17,16 @@ import Profile from '../Profile/Profile.component';
 import CreateStudent from '../Student/CreateStudent/CreateStudent.component';
 import UpdateStudent from '../Student/UpdateStudent/UpdateStudent.component';
 import DeleteStudent from '../Student/DeleteStudent/DeleteStudent.component';
-import { allComplaintsContext, refreshComplaintsContext } from '../../context/context';
+import { allComplaintsContext, refreshComplaintsContext,setLoader } from '../../context/context';
 const Home = () => {
   const [allComplaints, setAllComplaints] = useState([]);
-
+  const setShowLoader = useContext(setLoader)
   useEffect(() => {
     refreshComplaints();
     return () => {};
   }, []);
   const refreshComplaints = async () => {
+    setShowLoader(true);
     const complaint = await Axios.get(
       `https://grievance-app-backend.herokuapp.com/admin/complaint`,
       {
@@ -36,8 +37,13 @@ const Home = () => {
     );
     if (complaint.status === 200) {
       setAllComplaints(complaint.data.data.allComplaints);
+      setShowLoader(false);
       console.log(complaint.data.data.allComplaints);
+    }else{
+
+      setShowLoader(false);
     }
+    
   };
   return (
     <allComplaintsContext.Provider value={allComplaints}>

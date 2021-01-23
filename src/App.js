@@ -56,7 +56,15 @@ function App() {
           <adminId.Provider value={admin}>
             <div className="App">
               {IsLoggedIn ? <Home /> : <SignIn />}
-              {showLoader && <BoxLoading color="#3a42bb" size="large" />}
+              {showLoader && (
+                <BoxLoading
+                  color="#3a42bb"
+                  size="large"
+                  style={{ position: 'fixed', margin: 'auto', inset: '0px' }}
+                />
+              )}
+
+              {/* margin: auto; position: absolute; inset: 0px; */}
             </div>
           </adminId.Provider>
         </setLoader.Provider>

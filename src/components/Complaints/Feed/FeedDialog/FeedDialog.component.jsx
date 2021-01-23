@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,6 +12,10 @@ import Grid from '@material-ui/core/Grid';
 import SendIcon from '@material-ui/icons/Send';
 import './FeedDialog.styles.css';
 import AlertDialog from '../../../AlertDialog/AlertDialog.component';
+import Axios from 'axios';
+import cookie from 'js-cookie';
+import Snackbar from '@material-ui/core/Snackbar';
+import { setLoader } from './../../../../context/context';
 const FeedDialog = ({ open, handleClose, data }) => {
   let statusClass;
   if (data.status === 'seen') {
@@ -26,22 +30,56 @@ const FeedDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [response, setResponse] = useState('');
   const [validationState, setValidationState] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const setShowLoader = useContext(setLoader);
   const handleResponse = (e) => {
     setResponse(e.target.value);
   };
   const handleSubmit = () => {
     setValidationState(true);
     if (response !== '') {
-      setOpenDialog(true)
+      setOpenDialog(true);
     }
   };
-  const confirmSubmit = ()=>{
-    console.log(response)
-    setOpenDialog(false)
-    setResponse('')
-    handleClose();
-  }
+  const confirmSubmit = async () => {
+    console.log(response);
+    console.log(data._id);
+    if (response !== '') {
+      setOpenDialog(false);
+      setResponse('');
+      handleClose();
+      try {
+        setShowLoader(true);
+        const res = await Axios.patch(
+          'https://grievance-app-backend.herokuapp.com/admin/complaint',
+          {
+            data: {
+              id: {
+                _id: data._id,
+              },
+              data: { response: response },
+            },
+          },
+          {
+            headers: {
+              token: cookie.get('admin-token'),
+            },
+          }
+        );
+        if (res.status === 200) {
+          setShowLoader(false);
+          console.log('posted');
+          setOpenSnackBar(true);
+        } else {
+          setShowLoader(false);
+          console.log('failed to post');
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
       <Dialog
@@ -168,12 +206,18 @@ const FeedDialog = ({ open, handleClose, data }) => {
         </DialogActions>
       </Dialog>
       <AlertDialog
-      SetOpen={openDialog}
-      handleClose={()=>setOpenDialog(false)}
-      title="Confirm"
-      content="Once submitted you can't change or delete your complaint."
-      handleConfirm={confirmSubmit}
-      confirmButtonColorSecondary={false}
+        SetOpen={openDialog}
+        handleClose={() => setOpenDialog(false)}
+        title="Confirm"
+        content="Once submitted you can't change or re-post your response"
+        handleConfirm={confirmSubmit}
+        confirmButtonColorSecondary={false}
+      />
+      <Snackbar
+        open={openSnackBar}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackBar(false)}
+        message="Posted Response successfully"
       />
     </div>
   );

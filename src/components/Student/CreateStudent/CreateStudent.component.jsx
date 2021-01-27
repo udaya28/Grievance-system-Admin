@@ -26,6 +26,36 @@ const CreateStudent = () => {
   };
   const handleFormSubmit = () => {
     console.log(studentData);
+    setValidationState(true);
+    console.log(studentData);
+    const {
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+      password,
+    } = studentData;
+    const arrData = [
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+      password,
+    ];
+    if (
+      arrData.every((data) => data !== '') &&
+      firstName.length >= 3 &&
+      password.length >= 3
+    ) {
+      console.log('valid');
+      
+    }
   };
   return (
     <Container maxWidth="md">
@@ -89,25 +119,41 @@ const CreateStudent = () => {
           <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
+                select
                 label="Department Name"
                 variant="outlined"
                 name="departmentName"
                 value={studentData.departmentName}
-                onInput={handleInput}
+                onChange={handleInput}
+                style={{ textAlign: 'left' }}
                 error={ValidationState && studentData.departmentName === ''}
-              />
+              >
+                <MenuItem value="CSE">CSE</MenuItem>
+                <MenuItem value="IT">IT</MenuItem>
+                <MenuItem value="ECE">ECE</MenuItem>
+                <MenuItem value="MEC">MEC</MenuItem>
+                <MenuItem value="EEE">EEE</MenuItem>
+              </TextField>
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
+                select
                 label="Joint Year"
                 variant="outlined"
                 name="jointYear"
                 value={studentData.jointYear}
-                onInput={handleInput}
-                error={ValidationState && studentData.jointYear.length !== 4}
-              />
+                onChange={handleInput}
+                style={{ textAlign: 'left' }}
+                error={ValidationState && studentData.jointYear === ''}
+              >
+                <MenuItem value="2017">2017</MenuItem>
+                <MenuItem value="2018">2018</MenuItem>
+                <MenuItem value="2019">2019</MenuItem>
+                <MenuItem value="2020">2020</MenuItem>
+                <MenuItem value="2021">2021</MenuItem>
+              </TextField>
             </FormControl>
           </Grid>
 
@@ -142,7 +188,7 @@ const CreateStudent = () => {
                 }}
                 value={studentData.dateOfBirth}
                 onInput={handleInput}
-                error={ValidationState && studentData.dateOfBirth.length}
+                error={ValidationState && studentData.dateOfBirth === ''}
               />
             </FormControl>
           </Grid>

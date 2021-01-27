@@ -21,11 +21,11 @@ const CreateStudent = () => {
     password: '',
   });
   const handleInput = (e) => {
-    setStudentData({...studentData,[e.target.name]:e.target.value})
+    setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
-  const handleFormSubmit = () =>{
-    console.log(studentData)
-  }
+  const handleFormSubmit = () => {
+    console.log(studentData);
+  };
   return (
     <Container maxWidth="md">
       <h1 style={{ textAlign: 'left', margin: '10px 0px 0px' }}>
@@ -42,6 +42,7 @@ const CreateStudent = () => {
                 name="firstName"
                 value={studentData.firstName}
                 onInput={handleInput}
+                helperText="Minimum of 3 characters length"
                 // error={ValidationState && title === ''}
               />
             </FormControl>
@@ -82,6 +83,7 @@ const CreateStudent = () => {
                 name="password"
                 value={studentData.password}
                 onInput={handleInput}
+                helperText="Minimum of 3 characters length"
                 // error={ValidationState && title === ''}
               />
             </FormControl>
@@ -117,14 +119,19 @@ const CreateStudent = () => {
           <Grid items xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
+                select
+                id="select"
                 label="Gender"
                 variant="outlined"
                 name="gender"
                 value={studentData.gender}
-                onInput={handleInput}
+                onChange={handleInput}
+                style={{textAlign:"left"}}
                 // error={ValidationState && title === ''}
-              />
+              >
+                <MenuItem value="male">Male</MenuItem>
+                <MenuItem value="female">Female</MenuItem>
+              </TextField>
             </FormControl>
           </Grid>
           <Grid items xs={12} sm={6}>

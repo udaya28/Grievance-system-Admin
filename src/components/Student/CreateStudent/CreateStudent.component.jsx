@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -8,6 +8,14 @@ import SendIcon from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
 import './createStudent.styles.css';
 import Container from '@material-ui/core/Container';
+import AlertDialog from '../../AlertDialog/AlertDialog.component';
+import Axios from 'axios';
+import cookie from 'js-cookie';
+import Snackbar from '@material-ui/core/Snackbar';
+import {
+  setLoader,
+  refreshComplaintsContext,
+} from './../../../context/context';
 const CreateStudent = () => {
   const [studentData, setStudentData] = useState({
     firstName: '',
@@ -20,14 +28,18 @@ const CreateStudent = () => {
     password: '',
   });
   const [ValidationState, setValidationState] = useState(false);
-
+  const [openSnackBar, setOpenSnackBar] = useState({
+    open: false,
+    message: '',
+  });
+  const [openDialog, setOpenDialog] = useState(false);
+  const setShowLoader = useContext(setLoader);
   const handleInput = (e) => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
-  const handleFormSubmit = () => {
+  const handleFormSubmit = async () => {
     console.log(studentData);
     setValidationState(true);
-    console.log(studentData);
     const {
       firstName,
       secondName,
@@ -54,9 +66,77 @@ const CreateStudent = () => {
       password.length >= 3
     ) {
       console.log('valid');
-      
+      setOpenDialog(true);
     }
   };
+
+  const confirmSubmit = async () => {
+    let {
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+      password,
+    } = studentData;
+    dateOfBirth = dateOfBirth.split('-').reverse().join('-');
+    try {
+      setOpenDialog(false)
+      setShowLoader(true);
+      const res = await Axios.post(
+        'https://grievance-app-backend.herokuapp.com/admin/studentDetails',
+        {
+          data: {
+            firstName,
+            secondName,
+            departmentName,
+            jointYear,
+            gender,
+            rollNumber,
+            dateOfBirth,
+            password,
+          },
+        },
+        {
+          headers: {
+            token: cookie.get('admin-token'),
+          },
+        }
+      );
+      console.log(res.data)
+      if (res.status === 201) {
+        setShowLoader(false);
+        console.log('created');
+        setOpenSnackBar({
+          open: true,
+          message: 'Created Student successfully',
+        });
+        setStudentData({
+          firstName: '',
+          secondName: '',
+          departmentName: '',
+          jointYear: '',
+          gender: '',
+          rollNumber: '',
+          dateOfBirth: '',
+          password: '',
+        });
+      } else if (res.message === 'User already exist') {
+        setShowLoader(false);
+        console.log('user already exist');
+        setOpenSnackBar({ open: true, message: 'Student Already Exist' });
+      } else {
+        setShowLoader(false);
+        console.log('failed to post');
+      }
+      setValidationState(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <Container maxWidth="md">
       <h1 style={{ textAlign: 'left', margin: '10px 0px 0px' }}>
@@ -204,6 +284,20 @@ const CreateStudent = () => {
           </Grid>
         </Grid>
       </FormGroup>
+      <AlertDialog
+        SetOpen={openDialog}
+        handleClose={() => setOpenDialog(false)}
+        title="Confirm"
+        content="Are you sure to create student with given details"
+        handleConfirm={confirmSubmit}
+        confirmButtonColorSecondary={false}
+      />
+      <Snackbar
+        open={openSnackBar.open}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackBar({ open: false, message: '' })}
+        message={openSnackBar.message}
+      />
     </Container>
   );
 };

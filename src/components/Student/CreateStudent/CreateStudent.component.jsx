@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import MenuItem from '@material-ui/core/MenuItem';
 import SendIcon from '@material-ui/icons/Send';
 import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
 import './createStudent.styles.css';
 import Container from '@material-ui/core/Container';
 const CreateStudent = () => {
@@ -20,6 +19,8 @@ const CreateStudent = () => {
     dateOfBirth: '',
     password: '',
   });
+  const [ValidationState, setValidationState] = useState(false);
+
   const handleInput = (e) => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
@@ -33,90 +34,84 @@ const CreateStudent = () => {
       </h1>
       <FormGroup className="form-group1">
         <Grid container>
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="First Name"
                 variant="outlined"
                 name="firstName"
                 value={studentData.firstName}
                 onInput={handleInput}
                 helperText="Minimum of 3 characters length"
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.firstName.length < 3}
               />
             </FormControl>
           </Grid>
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Second Name"
                 variant="outlined"
                 name="secondName"
                 value={studentData.secondName}
                 onInput={handleInput}
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.secondName === ''}
               />
             </FormControl>
           </Grid>
 
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Roll Number"
                 variant="outlined"
                 name="rollNumber"
                 value={studentData.rollNumber}
                 onInput={handleInput}
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.rollNumber === ''}
               />
             </FormControl>
           </Grid>
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Password"
                 variant="outlined"
                 name="password"
                 value={studentData.password}
                 onInput={handleInput}
                 helperText="Minimum of 3 characters length"
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.password.length < 3}
               />
             </FormControl>
           </Grid>
 
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Department Name"
                 variant="outlined"
                 name="departmentName"
                 value={studentData.departmentName}
                 onInput={handleInput}
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.departmentName === ''}
               />
             </FormControl>
           </Grid>
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Joint Year"
                 variant="outlined"
                 name="jointYear"
                 value={studentData.jointYear}
                 onInput={handleInput}
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.jointYear.length !== 4}
               />
             </FormControl>
           </Grid>
 
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
                 select
@@ -126,25 +121,28 @@ const CreateStudent = () => {
                 name="gender"
                 value={studentData.gender}
                 onChange={handleInput}
-                style={{textAlign:"left"}}
-                // error={ValidationState && title === ''}
+                style={{ textAlign: 'left' }}
+                error={ValidationState && studentData.gender === ''}
               >
                 <MenuItem value="male">Male</MenuItem>
                 <MenuItem value="female">Female</MenuItem>
               </TextField>
             </FormControl>
           </Grid>
-          <Grid items xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl className="form-component">
               <TextField
-                id="outlined-basic"
                 label="Date of Birth"
+                type="date"
                 helperText="DD-MM-YYYY"
                 variant="outlined"
                 name="dateOfBirth"
+                InputLabelProps={{
+                  shrink: true,
+                }}
                 value={studentData.dateOfBirth}
                 onInput={handleInput}
-                // error={ValidationState && title === ''}
+                error={ValidationState && studentData.dateOfBirth.length}
               />
             </FormControl>
           </Grid>

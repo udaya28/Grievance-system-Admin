@@ -12,10 +12,7 @@ import AlertDialog from '../../AlertDialog/AlertDialog.component';
 import Axios from 'axios';
 import cookie from 'js-cookie';
 import Snackbar from '@material-ui/core/Snackbar';
-import {
-  setLoader,
-  refreshComplaintsContext,
-} from './../../../context/context';
+import { setLoader } from './../../../context/context';
 const CreateStudent = () => {
   const [studentData, setStudentData] = useState({
     firstName: '',
@@ -83,7 +80,7 @@ const CreateStudent = () => {
     } = studentData;
     dateOfBirth = dateOfBirth.split('-').reverse().join('-');
     try {
-      setOpenDialog(false)
+      setOpenDialog(false);
       setShowLoader(true);
       const res = await Axios.post(
         'https://grievance-app-backend.herokuapp.com/admin/studentDetails',
@@ -105,7 +102,7 @@ const CreateStudent = () => {
           },
         }
       );
-      console.log(res.data)
+      // console.log(res.data);
       if (res.status === 201) {
         setShowLoader(false);
         console.log('created');
@@ -123,17 +120,21 @@ const CreateStudent = () => {
           dateOfBirth: '',
           password: '',
         });
-      } else if (res.message === 'User already exist') {
-        setShowLoader(false);
-        console.log('user already exist');
-        setOpenSnackBar({ open: true, message: 'Student Already Exist' });
       } else {
         setShowLoader(false);
         console.log('failed to post');
       }
       setValidationState(false);
     } catch (err) {
-      console.log(err);
+      // console.log(err.response);
+      if (err.response.data.message === 'User already exist') {
+        setShowLoader(false);
+        console.log('user already exist');
+        setOpenSnackBar({ open: true, message: 'Roll Number Already Exist' });
+      } else {
+        setShowLoader(false);
+        console.log('failed to post');
+      }
     }
   };
 

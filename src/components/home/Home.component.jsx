@@ -20,9 +20,11 @@ import DeleteStudent from '../Student/DeleteStudent/DeleteStudent.component';
 import { allComplaintsContext, refreshComplaintsContext,setLoader } from '../../context/context';
 const Home = () => {
   const [allComplaints, setAllComplaints] = useState([]);
+  const [studentDetails, setStudentDetails] = useState([]);
   const setShowLoader = useContext(setLoader)
   useEffect(() => {
     refreshComplaints();
+    refreshStudents();
     return () => {};
   }, []);
   const refreshComplaints = async () => {
@@ -40,7 +42,25 @@ const Home = () => {
       setShowLoader(false);
       console.log(complaint.data.data.allComplaints);
     }else{
-
+      setShowLoader(false);
+    }
+    
+  };
+  const refreshStudents = async () => {
+    setShowLoader(true);
+    const studentData = await Axios.get(
+      `https://grievance-app-backend.herokuapp.com/admin/studentDetails`,
+      {
+        headers: {
+          token: cookie.get('admin-token'),
+        },
+      }
+    );
+    if (studentData.status === 200) {
+      setStudentDetails(studentData.data.data.Students);
+      setShowLoader(false);
+      console.log(studentData.data.data.Students);
+    }else{
       setShowLoader(false);
     }
     

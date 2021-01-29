@@ -6,8 +6,9 @@ import AccordionActions from '@material-ui/core/AccordionActions';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
-const StudentAccordion = ({data}) => {
-    console.log(data)
+import Grid from '@material-ui/core/Grid';
+const StudentAccordion = ({ data }) => {
+  console.log(data);
   return (
     <Accordion>
       <AccordionSummary
@@ -15,20 +16,28 @@ const StudentAccordion = ({data}) => {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-          
-        <b>{data.rollNumber} - {data.firstName}</b>
-     
+        <Grid container justify="space-between" alignItems="center">
+          <Grid item>
+            <b>{data.rollNumber}</b>
+          </Grid>
+          <Grid item>
+            <b style={{textTransform:"capitalize"}}>{data.firstName} {data.secondName}</b>
+          </Grid>
+          <Grid item>
+            <p>{' '}</p>
+          </Grid>
+        </Grid>
       </AccordionSummary>
-      <Divider/>
+      <Divider />
       <AccordionDetails>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
         </p>
       </AccordionDetails>
-      <Divider/>
+      <Divider />
       <AccordionActions>
-            <Button>EDIT</Button>
+        <Button>EDIT</Button>
       </AccordionActions>
     </Accordion>
   );

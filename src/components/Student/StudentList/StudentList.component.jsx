@@ -32,6 +32,17 @@ const StudentList = () => {
             </Grid>
           </Grid>
         </Toolbar>
+        <Grid container justify="space-between" alignItems="center" style={{margin:'5px 12px' , width:'auto'}}>
+          <Grid item>
+            <b>Roll.No</b>
+          </Grid>
+          <Grid item style={{marginRight:"30px"}}>
+            <b>Name</b>
+          </Grid>
+          <Grid item>
+            <p>{' '}</p>
+          </Grid>
+        </Grid>
       </AppBar>
 
       <div>

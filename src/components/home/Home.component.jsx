@@ -85,6 +85,7 @@ const Home = () => {
                   <Route exact path="/Grievance-system-Admin/create-student">
                     <CreateStudent />
                   </Route>
+
                   <Route exact path="/Grievance-system-Admin/update-student">
                     <UpdateStudent />
                   </Route>

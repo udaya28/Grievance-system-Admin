@@ -32,7 +32,7 @@ const StudentAccordion = ({ data }) => {
       </AccordionSummary>
       <Divider />
       <AccordionDetails>
-        <Grid container spacing={1  }>
+        <Grid container spacing={1}>
           <Grid item xs={12}>
             <Grid container justify="space-around">
               <b>Roll Number</b>
@@ -40,47 +40,41 @@ const StudentAccordion = ({ data }) => {
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>First Name</b>
               <p>{data.firstName}</p>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>Second Name</b>
               <p>{data.secondName}</p>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>Date of Birth</b>
               <p>{data.dateOfBirth}</p>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>Department</b>
               <p>{data.departmentName}</p>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>Gender</b>
               <p>{data.gender}</p>
             </Grid>
           </Grid>
           <Grid item xs={12}>
-            <Grid container justify="space-around" >
+            <Grid container justify="space-around">
               <b>Joint Year</b>
               <p>{data.jointYear}</p>
             </Grid>
           </Grid>
-         
-          
-          
-          
-          
-         
         </Grid>
       </AccordionDetails>
       <Divider />

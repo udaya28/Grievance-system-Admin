@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 const StudentAccordion = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <Accordion>
       <AccordionSummary
@@ -18,22 +18,70 @@ const StudentAccordion = ({ data }) => {
       >
         <Grid container justify="space-between" alignItems="center">
           <Grid item>
-            <b>{data.rollNumber}</b>
+            <b style={{ textTransform: 'capitalize' }}>{data.rollNumber}</b>
           </Grid>
           <Grid item>
-            <b style={{textTransform:"capitalize"}}>{data.firstName} {data.secondName}</b>
+            <b style={{ textTransform: 'capitalize' }}>
+              {data.firstName} {data.secondName}
+            </b>
           </Grid>
           <Grid item>
-            <p>{' '}</p>
+            <p> </p>
           </Grid>
         </Grid>
       </AccordionSummary>
       <Divider />
       <AccordionDetails>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          malesuada lacus ex, sit amet blandit leo lobortis eget.
-        </p>
+        <Grid container spacing={1  }>
+          <Grid item xs={12}>
+            <Grid container justify="space-around">
+              <b>Roll Number</b>
+              <p>{data.rollNumber}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>First Name</b>
+              <p>{data.firstName}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>Second Name</b>
+              <p>{data.secondName}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>Date of Birth</b>
+              <p>{data.dateOfBirth}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>Department</b>
+              <p>{data.departmentName}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>Gender</b>
+              <p>{data.gender}</p>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="space-around" >
+              <b>Joint Year</b>
+              <p>{data.jointYear}</p>
+            </Grid>
+          </Grid>
+         
+          
+          
+          
+          
+         
+        </Grid>
       </AccordionDetails>
       <Divider />
       <AccordionActions>

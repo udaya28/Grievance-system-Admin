@@ -10,9 +10,6 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { FaceRounded } from '@material-ui/icons';
 const StudentList = () => {
   const studentDetails = useContext(studentDetailsContext);
   const refreshStudentDetails = useContext(refreshStudentDetailsContext);
@@ -34,10 +31,10 @@ const StudentList = () => {
         </Toolbar>
         <Grid container justify="space-between" alignItems="center" style={{margin:'5px 12px' , width:'auto'}}>
           <Grid item>
-            <b>Roll.No</b>
+            <b className="mon">Roll.no</b>
           </Grid>
           <Grid item style={{marginRight:"30px"}}>
-            <b>Name</b>
+            <b  className="mon">Name</b>
           </Grid>
           <Grid item>
             <p>{' '}</p>
@@ -47,7 +44,7 @@ const StudentList = () => {
 
       <div>
         <div>
-          {studentDetails.map((data)=><StudentAccordion data={data} />)}
+          {studentDetails.map((data)=><StudentAccordion data={data} key={data._id}/>)}
         </div>
       </div>
     </div>

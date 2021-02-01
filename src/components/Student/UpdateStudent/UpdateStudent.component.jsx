@@ -9,7 +9,7 @@ const UpdateStudent = () => {
   return (
     <Container maxWidth="md">
       <h1 style={{ textAlign: 'left', margin: '10px 0px 0px' }}>Update Student</h1>
-      <StudentList/>
+      <StudentList buttonColor='secondary' buttonText='EDIT'/>
     </Container>
   );
 };

@@ -8,7 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
-const StudentAccordion = ({ data }) => {
+const StudentAccordion = ({ data , buttonText, buttonColor }) => {
   // console.log(data);
   return (
     <Accordion>
@@ -37,7 +37,7 @@ const StudentAccordion = ({ data }) => {
       </AccordionDetails>
       <Divider />      
       <AccordionActions>
-        <Button>EDIT</Button>
+        <Button color={buttonColor} ><b>{buttonText}</b></Button>
       </AccordionActions>
     </Accordion>
   );

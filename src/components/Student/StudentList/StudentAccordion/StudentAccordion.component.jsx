@@ -1,4 +1,5 @@
 import React from 'react';
+import StudentDetailsTable from './StudentDetailsTable/studentDetailsTable.component'
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -32,8 +33,24 @@ const StudentAccordion = ({ data }) => {
       </AccordionSummary>
       <Divider />
       <AccordionDetails>
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
+        <StudentDetailsTable data={data}/>
+      </AccordionDetails>
+      <Divider />      
+      <AccordionActions>
+        <Button>EDIT</Button>
+      </AccordionActions>
+    </Accordion>
+  );
+};
+
+export default StudentAccordion;
+
+
+
+
+
+        {/* <Grid container spacing={0}> */}
+          {/* <Grid item xs={12}>
             <Grid container justify="space-around">
               <b>Roll Number</b>
               <p>{data.rollNumber}</p>
@@ -73,16 +90,7 @@ const StudentAccordion = ({ data }) => {
             <Grid container justify="space-around">
               <b>Joint Year</b>
               <p>{data.jointYear}</p>
+              
             </Grid>
-          </Grid>
-        </Grid>
-      </AccordionDetails>
-      <Divider />
-      <AccordionActions>
-        <Button>EDIT</Button>
-      </AccordionActions>
-    </Accordion>
-  );
-};
-
-export default StudentAccordion;
+          </Grid> */}
+        {/* </Grid> */}

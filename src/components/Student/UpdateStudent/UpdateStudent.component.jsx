@@ -13,5 +13,5 @@ const UpdateStudent = () => {
     </Container>
   );
 };
-
+ 
 export default UpdateStudent;

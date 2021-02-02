@@ -15,7 +15,11 @@ import AlertDialog from '../../../AlertDialog/AlertDialog.component';
 import Axios from 'axios';
 import cookie from 'js-cookie';
 import Snackbar from '@material-ui/core/Snackbar';
-import { setLoader,refreshComplaintsContext } from './../../../../context/context';
+import {
+  setLoader,
+  refreshComplaintsContext,
+} from './../../../../context/context';
+import DetailsTable from './DetailsTable/DetailsTable.component';
 const FeedDialog = ({ open, handleClose, data }) => {
   let statusClass;
   if (data.status === 'seen') {
@@ -102,73 +106,35 @@ const FeedDialog = ({ open, handleClose, data }) => {
         </DialogTitle>
         <DialogContent dividers={true}>
           <DialogContentText>
-            <h1 className="dialogHeading">Student Details</h1>
-            <p>
-              <b>
-                Category&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                : &nbsp;
-              </b>
-              <i style={{ textTransform: 'capitalize' }}>{data.category}</i>
-            </p>
-            <p>
-              <b>
-                Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;
-              </b>
-              <i>{data.departmentName}</i>
-            </p>
-            <p>
-              <b>Academic Year &nbsp;: &nbsp;</b>
-              <i>
-                {data.jointYear} - {data.jointYear + 4}
-              </i>
-            </p>
-            <p>
-              <b>
-                Gender
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                : &nbsp;
-              </b>
-              <i style={{ textTransform: 'capitalize' }}>{data.gender}</i>
-            </p>
-            <h1 className="dialogHeading">Complaint Details</h1>
-            <h4 className="dialog-sub-heading">Title</h4>
-            <p>{data.title}</p>
-            <h4 className="dialog-sub-heading">Complaint</h4>
-            <p style={{ textAlign: 'justify' }}>{data.complaint}</p>
-            {data.response !== ''
-              ? [
-                  <h4 className="dialog-sub-heading">Response</h4>,
-                  <p style={{ textAlign: 'justify' }}>{data.response}</p>,
-                ]
-              : [
-                  <h4 className="dialog-sub-heading">Response</h4>,
-                  <FormGroup className="form-group">
-                    <FormControl style={{ width: '100%', margin: '10px 0px' }}>
-                      <TextField
-                        id="outlined-basic"
-                        label="Make Response"
-                        variant="outlined"
-                        multiline
-                        rows={8}
-                        helperText="Make Response for the Complaint"
-                        onInput={handleResponse}
-                        error={validationState && response === ''}
-                        value={response}
-                      />
-                    </FormControl>
-                    <Grid container justify="flex-end">
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        endIcon={<SendIcon />}
-                        onClick={() => handleSubmit()}
-                      >
-                        Send
-                      </Button>
-                    </Grid>
-                  </FormGroup>,
-                ]}
-            {/* [<h1 className="dialogHeading">No response received from committee </h1>] */}
+            <DetailsTable data={data} />
+            {data.response === '' && [
+              <h5 className="dialog-sub-heading">Make Response</h5>,
+              <FormGroup className="form-group">
+                <FormControl style={{ width: '100%', margin: '10px 0px' }}>
+                  <TextField
+                    id="outlined-basic"
+                    label="Response"
+                    variant="outlined"
+                    multiline
+                    rows={8}
+                    helperText="Make Response for the Complaint"
+                    onInput={handleResponse}
+                    error={validationState && response === ''}
+                    value={response}
+                  />
+                </FormControl>
+                <Grid container justify="flex-end">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    endIcon={<SendIcon />}
+                    onClick={() => handleSubmit()}
+                  >
+                    Send
+                  </Button>
+                </Grid>
+              </FormGroup>,
+            ]}
           </DialogContentText>
         </DialogContent>
         <DialogActions className="action">

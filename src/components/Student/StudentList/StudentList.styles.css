@@ -1,0 +1,9 @@
+.student-details-bar {
+  top: 64px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .student-details-bar {
+    top: 56px !important;
+  }
+}

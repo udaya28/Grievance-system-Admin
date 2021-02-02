@@ -16,7 +16,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
   console.log(studentDetails);
   return (
     <div container style={{ margin: '15px 0px' }}>
-      <AppBar position="sticky" style={{ top: '64px' }}>
+      <AppBar position="sticky" className="student-details-bar">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
             <Grid item>

@@ -71,7 +71,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
       <AppBar position="sticky" className="student-details-bar" size="">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
-            <Grid item xs={4}>
+            <Grid item xs={8} sm={4}>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -86,7 +86,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 />
               </div>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} className="hide">
               <FormControl
                 color="primary"
                 className="form-component"
@@ -97,7 +97,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   color="secondary"
                   select
                   label="Department"
-                  variant="outlined"
+                  variant="standard"
                   name="departmentName"
                   // value={studentData.departmentName}
                   // onChange={handleInput}
@@ -112,7 +112,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 </TextField>
               </FormControl>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} className="hide">
               <FormControl
                 color="primary"
                 className="form-component"
@@ -141,22 +141,29 @@ const StudentList = ({ buttonText, buttonColor }) => {
             {/* <Grid item xs={0}>
                   
             </Grid > */}
-            <Grid item xs={2}>
-              <IconButton onClick={handleClick}>
-                <SortIcon style={{ color: 'white' }} />
-              </IconButton>
-              <Menu
-                id="fade-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={menuOpen}
-                onClose={handleMenuClose}
-              >
-                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-              </Menu>
-              <IconButton onClick={() => refreshStudentDetails()}>
-                <AutorenewIcon style={{ color: 'white' }} />
-              </IconButton>
+            <Grid item xs={1} className="icon-hide">
+                  <IconButton onClick={handleClick}>
+                    <SortIcon style={{ color: 'white' }} />
+                  </IconButton>
+                  <Menu
+                    id="fade-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={menuOpen}
+                    onClose={handleMenuClose}
+                  >
+                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                  </Menu>
+                </Grid>
+            <Grid item xs={1}>
+              {/* <Grid container justify='flex-end' alignItems='center' direction='row'>
+                
+                <Grid item> */}
+                  <IconButton onClick={() => refreshStudentDetails()}>
+                    <AutorenewIcon style={{ color: 'white' }} />
+                  </IconButton>
+                {/* </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
         </Toolbar>

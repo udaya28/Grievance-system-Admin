@@ -2,8 +2,20 @@
   top: 64px !important;
 }
 
+.hide{
+  display: block;
+}
+.icon-hide{
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .student-details-bar {
     top: 56px !important;
+  }
+  .hide{
+    display: none;
+  }
+  .icon-hide{
+    display: block;
   }
 }

@@ -11,5 +11,4 @@ const DeleteStudent = () => {
     </Container>
   );
 };
-
 export default DeleteStudent;

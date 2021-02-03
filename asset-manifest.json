@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Grievance-system-Admin/static/css/main.30d83ad8.chunk.css",
-    "main.js": "/Grievance-system-Admin/static/js/main.9f5f9cf2.chunk.js",
-    "main.js.map": "/Grievance-system-Admin/static/js/main.9f5f9cf2.chunk.js.map",
+    "main.css": "/Grievance-system-Admin/static/css/main.2a6613ad.chunk.css",
+    "main.js": "/Grievance-system-Admin/static/js/main.0953a81a.chunk.js",
+    "main.js.map": "/Grievance-system-Admin/static/js/main.0953a81a.chunk.js.map",
     "runtime-main.js": "/Grievance-system-Admin/static/js/runtime-main.b8c4d06a.js",
     "runtime-main.js.map": "/Grievance-system-Admin/static/js/runtime-main.b8c4d06a.js.map",
-    "static/js/2.9dbd54d4.chunk.js": "/Grievance-system-Admin/static/js/2.9dbd54d4.chunk.js",
-    "static/js/2.9dbd54d4.chunk.js.map": "/Grievance-system-Admin/static/js/2.9dbd54d4.chunk.js.map",
+    "static/js/2.f980c43b.chunk.js": "/Grievance-system-Admin/static/js/2.f980c43b.chunk.js",
+    "static/js/2.f980c43b.chunk.js.map": "/Grievance-system-Admin/static/js/2.f980c43b.chunk.js.map",
     "index.html": "/Grievance-system-Admin/index.html",
-    "static/css/main.30d83ad8.chunk.css.map": "/Grievance-system-Admin/static/css/main.30d83ad8.chunk.css.map",
-    "static/js/2.9dbd54d4.chunk.js.LICENSE.txt": "/Grievance-system-Admin/static/js/2.9dbd54d4.chunk.js.LICENSE.txt"
+    "static/css/main.2a6613ad.chunk.css.map": "/Grievance-system-Admin/static/css/main.2a6613ad.chunk.css.map",
+    "static/js/2.f980c43b.chunk.js.LICENSE.txt": "/Grievance-system-Admin/static/js/2.f980c43b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b8c4d06a.js",
-    "static/js/2.9dbd54d4.chunk.js",
-    "static/css/main.30d83ad8.chunk.css",
-    "static/js/main.9f5f9cf2.chunk.js"
+    "static/js/2.f980c43b.chunk.js",
+    "static/css/main.2a6613ad.chunk.css",
+    "static/js/main.0953a81a.chunk.js"
   ]
 }

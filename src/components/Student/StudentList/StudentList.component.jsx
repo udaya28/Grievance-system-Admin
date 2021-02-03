@@ -71,7 +71,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
       <AppBar position="sticky" className="student-details-bar" size="">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={9} sm={4}>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -90,15 +90,18 @@ const StudentList = ({ buttonText, buttonColor }) => {
               <FormControl
                 color="primary"
                 className="form-component"
-                style={{ color: 'white', width: '100%' }}
+                
               >
                 <TextField
                   size="small"
-                  color="secondary"
+                  color="primary"
                   select
                   label="Department"
                   variant="standard"
                   name="departmentName"
+                  style={{ color: 'white'}}
+                  
+                  // inputProps={{}
                   // value={studentData.departmentName}
                   // onChange={handleInput}
                   // style={{ textAlign: 'left'}}
@@ -116,15 +119,16 @@ const StudentList = ({ buttonText, buttonColor }) => {
               <FormControl
                 color="primary"
                 className="form-component"
-                style={{ color: 'white', width: '100%' }}
+                // style={{ color: 'white', width: '100%' }}
               >
                 <TextField
                   size="small"
-                  color="secondary"
+                  color="primary"
                   select
                   label="Department"
                   variant="standard"
                   name="departmentName"
+                  style={{ color: 'white'}}
                   // value={studentData.departmentName}
                   // onChange={handleInput}
                   // style={{ textAlign: 'left'}}

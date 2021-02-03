@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './StudentList.styles.css';
 import {
   studentDetailsContext,
@@ -13,11 +13,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-const StudentList = ({ buttonText, buttonColor }) => {
-  const studentDetails = useContext(studentDetailsContext);
-  const refreshStudentDetails = useContext(refreshStudentDetailsContext);
-  console.log(studentDetails);
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import SortIcon from '@material-ui/icons/Sort';
+import FormControl from '@material-ui/core/FormControl';
 
+const StudentList = ({ buttonText, buttonColor }) => {
   const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
@@ -44,16 +46,32 @@ const StudentList = ({ buttonText, buttonColor }) => {
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-        width: '12ch',
+      width: '16ch',
     },
   }));
+  const studentDetails = useContext(studentDetailsContext);
+  const refreshStudentDetails = useContext(refreshStudentDetailsContext);
+  console.log(studentDetails);
   const classes = useStyles();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleMenuClose = () => {
+    setMenuOpen(false);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setMenuOpen(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <div container style={{ margin: '15px 0px' }}>
       <AppBar position="sticky" className="student-details-bar" size="">
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
-            <Grid item >
+            <Grid item xs={4}>
               <div className={classes.search}>
                 <div className={classes.searchIcon}>
                   <SearchIcon />
@@ -68,7 +86,74 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 />
               </div>
             </Grid>
-            <Grid item>
+            <Grid item xs={3}>
+              <FormControl
+                color="primary"
+                className="form-component"
+                style={{ color: 'white', width: '100%' }}
+              >
+                <TextField
+                  size="small"
+                  color="secondary"
+                  select
+                  label="Department"
+                  variant="outlined"
+                  name="departmentName"
+                  // value={studentData.departmentName}
+                  // onChange={handleInput}
+                  // style={{ textAlign: 'left'}}
+                  // error={ValidationState && studentData.departmentName === ''}
+                >
+                  <MenuItem value="CSE">CSE</MenuItem>
+                  <MenuItem value="IT">IT</MenuItem>
+                  <MenuItem value="ECE">ECE</MenuItem>
+                  <MenuItem value="MEC">MEC</MenuItem>
+                  <MenuItem value="EEE">EEE</MenuItem>
+                </TextField>
+              </FormControl>
+            </Grid>
+            <Grid item xs={3}>
+              <FormControl
+                color="primary"
+                className="form-component"
+                style={{ color: 'white', width: '100%' }}
+              >
+                <TextField
+                  size="small"
+                  color="secondary"
+                  select
+                  label="Department"
+                  variant="standard"
+                  name="departmentName"
+                  // value={studentData.departmentName}
+                  // onChange={handleInput}
+                  // style={{ textAlign: 'left'}}
+                  // error={ValidationState && studentData.departmentName === ''}
+                >
+                  <MenuItem value="CSE">CSE</MenuItem>
+                  <MenuItem value="IT">IT</MenuItem>
+                  <MenuItem value="ECE">ECE</MenuItem>
+                  <MenuItem value="MEC">MEC</MenuItem>
+                  <MenuItem value="EEE">EEE</MenuItem>
+                </TextField>
+              </FormControl>
+            </Grid>
+            {/* <Grid item xs={0}>
+                  
+            </Grid > */}
+            <Grid item xs={2}>
+              <IconButton onClick={handleClick}>
+                <SortIcon style={{ color: 'white' }} />
+              </IconButton>
+              <Menu
+                id="fade-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={menuOpen}
+                onClose={handleMenuClose}
+              >
+                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+              </Menu>
               <IconButton onClick={() => refreshStudentDetails()}>
                 <AutorenewIcon style={{ color: 'white' }} />
               </IconButton>

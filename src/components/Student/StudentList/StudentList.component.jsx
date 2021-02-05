@@ -239,8 +239,10 @@ const StudentList = ({ buttonText, buttonColor }) => {
       </AppBar>
 
       <div>
-        <div>
-          {filteredData.map((data) => (
+        <div>{
+          filteredData.length === 0 && <p style={{margin:'20vh auto'}}>No match found</p>
+          }
+          {filteredData.length !== 0 && filteredData.map((data) => (
             <StudentAccordion
               data={data}
               key={data._id}

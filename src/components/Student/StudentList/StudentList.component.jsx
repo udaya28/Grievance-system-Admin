@@ -56,17 +56,21 @@ const StudentList = ({ buttonText, buttonColor }) => {
   const classes = useStyles();
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [filterData, setFilterData] = useState({searchString:'',departmentName:'ALL',jointYear:'ALL'})
+  const {searchString,departmentName,jointYear} = filterData;
   const handleMenuClose = () => {
     setMenuOpen(false);
+    setAnchorEl(null);
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     setMenuOpen(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleInput = (event)=>{
+    console.log(event.target)
+    setFilterData({...filterData ,[event.target.name]:event.target.value})
+  }
   return (
     <div container style={{ margin: '15px 0px' }}>
       <AppBar position="sticky" className="student-details-bar" size="">
@@ -78,11 +82,14 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   <SearchIcon />
                 </div>
                 <InputBase
+                name="searchString"
+                value={searchString}
                   placeholder="Search…"
                   classes={{
                     root: classes.inputRoot,
                     input: classes.inputInput,
                   }}
+                  onInput={handleInput}
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </div>
@@ -98,8 +105,8 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   margin="none"
                   name="departmentName"
                   className="test"
-                  value={'ALL'}
-                  // onChange={handleInput}
+                  value={departmentName}
+                  onChange={handleInput}
                   style={{ textAlign: 'center' }}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
@@ -124,8 +131,8 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   name="jointYear"
                   style={{ textAlign: 'center' }}
                   className="test"
-                  value={'ALL'}
-                  // onChange={handleInput}
+                  value={jointYear}
+                  onChange={handleInput}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
                   <MenuItem value="ALL">ALL</MenuItem>
@@ -136,9 +143,6 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 </TextField>
               </FormControl>
             </Grid>
-            {/* <Grid item xs={0}>
-                  
-            </Grid > */}
             <Grid item xs={1} className="icon-hide">
               <IconButton onClick={handleClick}>
                 <SortIcon style={{ color: 'white' }} />
@@ -153,7 +157,6 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
                 transformOrigin={{ horizontal: 'center' }}
               >
-                {/* onClick={handleMenuClose} */}
                 <MenuItem style={{ width: '150px' }}>
                   <FormControl color="primary" className="form-component">
                     <TextField
@@ -165,11 +168,8 @@ const StudentList = ({ buttonText, buttonColor }) => {
                       margin="none"
                       name="departmentName"
                       style={{ textAlign: 'center' }}
-                      value={'ALL'}
-                      // className="test"
-                      // value={studentData.departmentName}
-                      // onChange={handleInput}
-                      // error={ValidationState && studentData.departmentName === ''}
+                      value={departmentName}
+                      onChange={handleInput}
                     >
                       <MenuItem value="ALL">ALL</MenuItem>
                       <MenuItem value="CSE">CSE</MenuItem>
@@ -191,9 +191,8 @@ const StudentList = ({ buttonText, buttonColor }) => {
                       margin="none"
                       name="jointYear"
                       style={{ textAlign: 'center' }}
-                      value={'ALL'}
-                      // onChange={handleInput}
-                      // error={ValidationState && studentData.departmentName === ''}
+                      value={jointYear}
+                      onChange={handleInput}
                     >
                       <MenuItem value="ALL">ALL</MenuItem>
                       <MenuItem value="2017">2017 - 2021</MenuItem>

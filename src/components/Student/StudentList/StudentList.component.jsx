@@ -98,11 +98,12 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   margin="none"
                   name="departmentName"
                   className="test"
-                  // value={studentData.departmentName}
+                  value={'ALL'}
                   // onChange={handleInput}
                   style={{ textAlign: 'center' }}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
+                  <MenuItem value="ALL">ALL</MenuItem>
                   <MenuItem value="CSE">CSE</MenuItem>
                   <MenuItem value="IT">IT</MenuItem>
                   <MenuItem value="ECE">ECE</MenuItem>
@@ -117,21 +118,21 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   size="small"
                   color="primary"
                   select
-                  label="Department"
+                  label="Academic Year"
                   variant="standard"
                   margin="none"
-                  name="departmentName"
+                  name="jointYear"
                   style={{ textAlign: 'center' }}
                   className="test"
-                  // value={studentData.departmentName}
+                  value={'ALL'}
                   // onChange={handleInput}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
-                  <MenuItem value="CSE">CSE</MenuItem>
-                  <MenuItem value="IT">IT</MenuItem>
-                  <MenuItem value="ECE">ECE</MenuItem>
-                  <MenuItem value="MEC">MEC</MenuItem>
-                  <MenuItem value="EEE">EEE</MenuItem>
+                  <MenuItem value="ALL">ALL</MenuItem>
+                  <MenuItem value="2017">2017 - 2021</MenuItem>
+                  <MenuItem value="2018">2018 - 2022</MenuItem>
+                  <MenuItem value="2019">2019 - 2023</MenuItem>
+                  <MenuItem value="2020">2020 - 2024</MenuItem>
                 </TextField>
               </FormControl>
             </Grid>
@@ -149,9 +150,56 @@ const StudentList = ({ buttonText, buttonColor }) => {
                 open={menuOpen}
                 onClose={handleMenuClose}
               >
-                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                {/* onClick={handleMenuClose} */}
+                <MenuItem style={{width:"150px"}}>
+                  <FormControl color="primary" className="form-component">
+                    <TextField
+                      size="small"
+                      color="primary"
+                      select
+                      label="Department"
+                      variant="standard"
+                      margin="none"
+                      name="departmentName"
+                      style={{ textAlign: 'center' }}
+                      value={'ALL'}
+                      // className="test"
+                      // value={studentData.departmentName}
+                      // onChange={handleInput}
+                      // error={ValidationState && studentData.departmentName === ''}
+                    >
+                      <MenuItem value="ALL">ALL</MenuItem>
+                      <MenuItem value="CSE">CSE</MenuItem>
+                      <MenuItem value="IT">IT</MenuItem>
+                      <MenuItem value="ECE">ECE</MenuItem>
+                      <MenuItem value="MEC">MEC</MenuItem>
+                      <MenuItem value="EEE">EEE</MenuItem>
+                    </TextField>
+                  </FormControl>
+                </MenuItem>
+                <MenuItem>
+                  <FormControl color="primary" className="form-component">
+                    <TextField
+                      size="small"
+                      color="primary"
+                      select
+                      label="Academic Year"
+                      variant="standard"
+                      margin="none"
+                      name="jointYear"
+                      style={{ textAlign: 'center' }}
+                      value={'ALL'}
+                      // onChange={handleInput}
+                      // error={ValidationState && studentData.departmentName === ''}
+                    >
+                      <MenuItem value="ALL">ALL</MenuItem>
+                      <MenuItem value="2017">2017 - 2021</MenuItem>
+                      <MenuItem value="2018">2018 - 2022</MenuItem>
+                      <MenuItem value="2019">2019 - 2023</MenuItem>
+                      <MenuItem value="2020">2020 - 2024</MenuItem>
+                    </TextField>
+                  </FormControl>
+                </MenuItem>
               </Menu>
             </Grid>
             <Grid item xs={1}>

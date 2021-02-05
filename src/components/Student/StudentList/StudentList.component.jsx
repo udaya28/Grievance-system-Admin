@@ -31,6 +31,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
       marginLeft: 0,
       width: '100%',
     },
+    
     searchIcon: {
       padding: theme.spacing(0, 2),
       height: '100%',
@@ -87,24 +88,20 @@ const StudentList = ({ buttonText, buttonColor }) => {
               </div>
             </Grid>
             <Grid item xs={3} className="hide">
-              <FormControl
-                color="primary"
-                className="form-component"
-                
-              >
+              <FormControl color="primary" className="form-component">
                 <TextField
+                
                   size="small"
                   color="primary"
                   select
                   label="Department"
                   variant="standard"
+                  margin='none'
                   name="departmentName"
-                  style={{ color: 'white'}}
-                  
-                  // inputProps={{}
+                  className='test'
                   // value={studentData.departmentName}
                   // onChange={handleInput}
-                  // style={{ textAlign: 'left'}}
+                  style={{ textAlign: 'center'}}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
                   <MenuItem value="CSE">CSE</MenuItem>
@@ -127,11 +124,12 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   select
                   label="Department"
                   variant="standard"
+                  margin='none'
                   name="departmentName"
-                  style={{ color: 'white'}}
+                  style={{  textAlign: 'center'}}
+                  className='test'
                   // value={studentData.departmentName}
                   // onChange={handleInput}
-                  // style={{ textAlign: 'left'}}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
                   <MenuItem value="CSE">CSE</MenuItem>
@@ -146,28 +144,25 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   
             </Grid > */}
             <Grid item xs={1} className="icon-hide">
-                  <IconButton onClick={handleClick}>
-                    <SortIcon style={{ color: 'white' }} />
-                  </IconButton>
-                  <Menu
-                    id="fade-menu"
-                    anchorEl={anchorEl}
-                    keepMounted
-                    open={menuOpen}
-                    onClose={handleMenuClose}
-                  >
-                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                  </Menu>
-                </Grid>
+              <IconButton onClick={handleClick}>
+                <SortIcon style={{ color: 'white' }} />
+              </IconButton>
+              <Menu
+                id="fade-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={menuOpen}
+                onClose={handleMenuClose}
+              >
+                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+              </Menu>
+            </Grid>
             <Grid item xs={1}>
-              {/* <Grid container justify='flex-end' alignItems='center' direction='row'>
-                
-                <Grid item> */}
-                  <IconButton onClick={() => refreshStudentDetails()}>
-                    <AutorenewIcon style={{ color: 'white' }} />
-                  </IconButton>
-                {/* </Grid>
-              </Grid> */}
+              <IconButton onClick={() => refreshStudentDetails()}>
+                <AutorenewIcon style={{ color: 'white' }} />
+              </IconButton>
             </Grid>
           </Grid>
         </Toolbar>

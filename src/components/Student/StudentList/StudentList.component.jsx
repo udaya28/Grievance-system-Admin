@@ -145,13 +145,16 @@ const StudentList = ({ buttonText, buttonColor }) => {
               </IconButton>
               <Menu
                 id="fade-menu"
-                anchorEl={anchorEl}
                 keepMounted
+                anchorEl={anchorEl}
                 open={menuOpen}
                 onClose={handleMenuClose}
+                getContentAnchorEl={null}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                transformOrigin={{ horizontal: 'center' }}
               >
                 {/* onClick={handleMenuClose} */}
-                <MenuItem style={{width:"150px"}}>
+                <MenuItem style={{ width: '150px' }}>
                   <FormControl color="primary" className="form-component">
                     <TextField
                       size="small"

@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './StudentList.styles.css';
 import {
   studentDetailsContext,
   refreshStudentDetailsContext,
 } from './../../../context/context';
+import getFilteredStudentDetails from './StudentAccordion/StudentFilter';
 import StudentAccordion from './StudentAccordion/StudentAccordion.component';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import AppBar from '@material-ui/core/AppBar';
@@ -50,14 +51,22 @@ const StudentList = ({ buttonText, buttonColor }) => {
       width: '16ch',
     },
   }));
+  const classes = useStyles();
   const studentDetails = useContext(studentDetailsContext);
   const refreshStudentDetails = useContext(refreshStudentDetailsContext);
-  console.log(studentDetails);
-  const classes = useStyles();
+  const [filteredData, setFilteredData] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
-  const [filterData, setFilterData] = useState({searchString:'',departmentName:'ALL',jointYear:'ALL'})
-  const {searchString,departmentName,jointYear} = filterData;
+  const [filterData, setFilterData] = useState({
+    searchString: '',
+    departmentName: 'ALL',
+    jointYear: 'ALL',
+  });
+  const { searchString, departmentName, jointYear } = filterData;
+  useEffect(() => {
+    setFilteredData(getFilteredStudentDetails(studentDetails,filterData));
+    return () => {};
+  }, [studentDetails,filterData]);
   const handleMenuClose = () => {
     setMenuOpen(false);
     setAnchorEl(null);
@@ -67,10 +76,9 @@ const StudentList = ({ buttonText, buttonColor }) => {
     setMenuOpen(true);
   };
 
-  const handleInput = (event)=>{
-    console.log(event.target)
-    setFilterData({...filterData ,[event.target.name]:event.target.value})
-  }
+  const handleInput = (event) => {
+    setFilterData({ ...filterData, [event.target.name]: event.target.value });
+  };
   return (
     <div container style={{ margin: '15px 0px' }}>
       <AppBar position="sticky" className="student-details-bar" size="">
@@ -82,8 +90,8 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   <SearchIcon />
                 </div>
                 <InputBase
-                name="searchString"
-                value={searchString}
+                  name="searchString"
+                  value={searchString}
                   placeholder="Search…"
                   classes={{
                     root: classes.inputRoot,
@@ -108,7 +116,6 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   value={departmentName}
                   onChange={handleInput}
                   style={{ textAlign: 'center' }}
-                  // error={ValidationState && studentData.departmentName === ''}
                 >
                   <MenuItem value="ALL">ALL</MenuItem>
                   <MenuItem value="CSE">CSE</MenuItem>
@@ -140,6 +147,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
                   <MenuItem value="2018">2018 - 2022</MenuItem>
                   <MenuItem value="2019">2019 - 2023</MenuItem>
                   <MenuItem value="2020">2020 - 2024</MenuItem>
+                  <MenuItem value="2021">2021 - 2025</MenuItem>
                 </TextField>
               </FormControl>
             </Grid>
@@ -199,6 +207,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
                       <MenuItem value="2018">2018 - 2022</MenuItem>
                       <MenuItem value="2019">2019 - 2023</MenuItem>
                       <MenuItem value="2020">2020 - 2024</MenuItem>
+                      <MenuItem value="2021">2021 - 2025</MenuItem>
                     </TextField>
                   </FormControl>
                 </MenuItem>
@@ -231,7 +240,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
 
       <div>
         <div>
-          {studentDetails.map((data) => (
+          {filteredData.map((data) => (
             <StudentAccordion
               data={data}
               key={data._id}

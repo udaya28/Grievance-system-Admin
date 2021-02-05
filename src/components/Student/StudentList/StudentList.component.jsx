@@ -31,7 +31,7 @@ const StudentList = ({ buttonText, buttonColor }) => {
       marginLeft: 0,
       width: '100%',
     },
-    
+
     searchIcon: {
       padding: theme.spacing(0, 2),
       height: '100%',
@@ -90,18 +90,17 @@ const StudentList = ({ buttonText, buttonColor }) => {
             <Grid item xs={3} className="hide">
               <FormControl color="primary" className="form-component">
                 <TextField
-                
                   size="small"
                   color="primary"
                   select
                   label="Department"
                   variant="standard"
-                  margin='none'
+                  margin="none"
                   name="departmentName"
-                  className='test'
+                  className="test"
                   // value={studentData.departmentName}
                   // onChange={handleInput}
-                  style={{ textAlign: 'center'}}
+                  style={{ textAlign: 'center' }}
                   // error={ValidationState && studentData.departmentName === ''}
                 >
                   <MenuItem value="CSE">CSE</MenuItem>
@@ -113,21 +112,17 @@ const StudentList = ({ buttonText, buttonColor }) => {
               </FormControl>
             </Grid>
             <Grid item xs={3} className="hide">
-              <FormControl
-                color="primary"
-                className="form-component"
-                // style={{ color: 'white', width: '100%' }}
-              >
+              <FormControl color="primary" className="form-component">
                 <TextField
                   size="small"
                   color="primary"
                   select
                   label="Department"
                   variant="standard"
-                  margin='none'
+                  margin="none"
                   name="departmentName"
-                  style={{  textAlign: 'center'}}
-                  className='test'
+                  style={{ textAlign: 'center' }}
+                  className="test"
                   // value={studentData.departmentName}
                   // onChange={handleInput}
                   // error={ValidationState && studentData.departmentName === ''}

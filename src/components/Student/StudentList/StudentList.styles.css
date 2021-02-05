@@ -2,45 +2,44 @@
   top: 64px !important;
 }
 
-.hide{
+.hide {
   display: block;
 }
-.icon-hide{
+.icon-hide {
   display: none;
 }
 @media only screen and (max-width: 600px) {
   .student-details-bar {
     top: 56px !important;
   }
-  .hide{
+  .hide {
     display: none;
   }
-  .icon-hide{
+  .icon-hide {
     display: block;
   }
 }
 
-.test > *{
-  color:white!important;
+.test > * {
+  color: white !important;
 }
 
-.test svg{
-  color:white;
+.test svg {
+  color: white;
   border-radius: 5px;
 }
 
-.test .MuiSelect-select:focus{
+.test .MuiSelect-select:focus {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
-.test .MuiSelect-select{
+.test .MuiSelect-select {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
-.test label + .MuiInput-underline:hover:not(.Mui-disabled):before{
-  border-bottom:0px;
+.test label + .MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 0px;
 }
 .test {
   text-align: center;
 }
-

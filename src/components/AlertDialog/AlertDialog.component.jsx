@@ -19,6 +19,7 @@ const AlertDialog = ({
       <Dialog
         open={SetOpen}
         onClose={handleClose}
+        maxWidth={"xs"}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >

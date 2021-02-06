@@ -79,7 +79,7 @@ const DeleteStudent = () => {
       <h1 style={{ textAlign: 'left', margin: '10px 0px 0px' }}>
         Delete Student
       </h1>
-      <StudentList handelDelete={handelDelete} buttonText="DELETE" />
+      <StudentList handelClickEvent={handelDelete} buttonText="DELETE" />
       <AlertDialog
         SetOpen={dialogOpen}
         handleClose={handleDialogClose}

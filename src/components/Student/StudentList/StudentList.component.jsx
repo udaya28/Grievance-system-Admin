@@ -20,7 +20,7 @@ import TextField from '@material-ui/core/TextField';
 import SortIcon from '@material-ui/icons/Sort';
 import FormControl from '@material-ui/core/FormControl';
 
-const StudentList = ({ buttonText,handelDelete }) => {
+const StudentList = ({ buttonText,handelClickEvent }) => {
   const useStyles = makeStyles((theme) => ({
     search: {
       position: 'relative',
@@ -247,7 +247,7 @@ const StudentList = ({ buttonText,handelDelete }) => {
               data={data}
               key={data._id}
               buttonText={buttonText}
-              handelDelete={handelDelete}
+              handelClickEvent={handelClickEvent}
             />
           ))}
         </div>

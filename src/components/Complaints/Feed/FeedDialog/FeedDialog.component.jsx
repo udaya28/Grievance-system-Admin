@@ -170,7 +170,10 @@ const FeedDialog = ({ open, handleClose, data }) => {
             }}
             color="primary"
           >
-            <b>Close</b>
+            <b>
+               Close
+            </b>
+           
           </Button>
         </DialogActions>
       </Dialog>

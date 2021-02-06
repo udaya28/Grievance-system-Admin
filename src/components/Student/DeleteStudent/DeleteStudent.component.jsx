@@ -40,7 +40,7 @@ const DeleteStudent = () => {
   const handelConfirmDelete = async () => {
     try {
       setDialogOpen(false);
-      setShowLoader(true)
+      setShowLoader(true);
       const res = await Axios.delete(
         `https://grievance-app-backend.herokuapp.com/admin/studentDetails/${currentStudent._id}`,
         {
@@ -49,14 +49,14 @@ const DeleteStudent = () => {
           },
         }
       );
-      if(res.status === 204){
+      if (res.status === 204) {
         setOpenSnackBar({
           open: true,
           message: 'Student has been deleted successfully',
         });
         refreshStudentDetails();
-      }else{
-        setShowLoader(false)
+      } else {
+        setShowLoader(false);
         setOpenSnackBar({
           open: true,
           message: 'Failed to delete Student',
@@ -65,16 +65,13 @@ const DeleteStudent = () => {
       }
     } catch (error) {
       console.log(error);
-      setShowLoader(false)
-        setOpenSnackBar({
-          open: true,
-          message: 'Failed to delete Student',
-        });
-        refreshStudentDetails();
+      setShowLoader(false);
+      setOpenSnackBar({
+        open: true,
+        message: 'Failed to delete Student',
+      });
+      refreshStudentDetails();
     }
-    
-    
-    
   };
 
   return (

@@ -126,7 +126,6 @@ const CreateStudent = () => {
       }
       setValidationState(false);
     } catch (err) {
-      // console.log(err.response);
       if (err.response.data.message === 'User already exist') {
         setShowLoader(false);
         console.log('user already exist');

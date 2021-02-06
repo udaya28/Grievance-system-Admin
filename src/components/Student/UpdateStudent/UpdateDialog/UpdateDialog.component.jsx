@@ -56,11 +56,3 @@ const UpdateDialog = ({ open, handleClose, data }) => {
 
 export default UpdateDialog;
 
-
-// InputProps={{
-//     endAdornment: (
-//       <InputAdornment position="start">
-//         <AccountCircle color="primary" />
-//       </InputAdornment>
-//     ),
-//   }}

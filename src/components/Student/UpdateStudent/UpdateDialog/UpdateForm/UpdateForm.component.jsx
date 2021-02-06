@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import './UpdateForm.styles.css'
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import EditIcon from '@material-ui/icons/Edit';
 const UpdateForm = () => {
   const [studentData, setStudentData] = useState({
     firstName: '',
@@ -20,7 +24,7 @@ const UpdateForm = () => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
   return (
-    <FormGroup >
+    <FormGroup>
       <Grid container>
         <Grid item xs={12} sm={6}>
           <FormControl className="form-component">
@@ -32,6 +36,15 @@ const UpdateForm = () => {
               onInput={handleInput}
               helperText="Minimum of 3 characters length"
               error={ValidationState && studentData.firstName.length < 3}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start" style={{padding:"0px"}}>
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </FormControl>
         </Grid>

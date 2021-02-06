@@ -97,7 +97,4 @@ const DeleteStudent = () => {
     </Container>
   );
 };
-
-// content={`Are you sure to delete Udaya M (19CSR118) of CES of Academic year 2019-2023 once deleted you can not retrieve the student data. The complaints made by the student will not be deleted.`}
-
 export default DeleteStudent;

@@ -35,7 +35,6 @@ const CreateStudent = () => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
   const handleFormSubmit = async () => {
-    console.log(studentData);
     setValidationState(true);
     const {
       firstName,
@@ -62,7 +61,6 @@ const CreateStudent = () => {
       firstName.length >= 3 &&
       password.length >= 3
     ) {
-      console.log('valid');
       setOpenDialog(true);
     }
   };
@@ -105,7 +103,6 @@ const CreateStudent = () => {
       // console.log(res.data);
       if (res.status === 201) {
         setShowLoader(false);
-        console.log('created');
         setOpenSnackBar({
           open: true,
           message: 'Created Student successfully',
@@ -133,6 +130,7 @@ const CreateStudent = () => {
       } else {
         setShowLoader(false);
         console.log('failed to post');
+        setOpenSnackBar({ open: true, message: 'Failed to create Try again' });
       }
     }
   };

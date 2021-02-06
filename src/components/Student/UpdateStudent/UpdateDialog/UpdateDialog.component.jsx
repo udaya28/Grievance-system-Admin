@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AlertDialog from './../../../AlertDialog/AlertDialog.component';
+import UpdateForm from './UpdateForm/UpdateForm.component'
 const UpdateDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [openDialogConfirm, setOpenDialogConfirm] = useState(false);
@@ -30,14 +31,7 @@ const UpdateDialog = ({ open, handleClose, data }) => {
         <DialogTitle>Update Details</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Necessitatibus eius numquam quo maxime adipisci consequatur, dolore,
-            commodi sapiente molestias vitae nisi nobis possimus! Beatae numquam
-            vitae deserunt nostrum consequuntur molestiae! Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Voluptatum, dolorem unde deleniti
-            ad aperiam cupiditate magni officia, accusantium recusandae
-            architecto voluptas illo blanditiis incidunt perspiciatis reiciendis
-            velit harum delectus facilis.
+            <UpdateForm/>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

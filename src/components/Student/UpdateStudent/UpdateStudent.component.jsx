@@ -2,13 +2,7 @@ import React, { useState, useContext } from 'react';
 import StudentList from './../StudentList/StudentList.component';
 import Container from '@material-ui/core/Container';
 import UpdateDialog from './UpdateDialog/UpdateDialog.component';
-import {
-  refreshStudentDetailsContext,
-  setLoader,
-} from './../../../context/context';
-import Axios from 'axios';
-import cookie from 'js-cookie';
-import Snackbar from '@material-ui/core/Snackbar';
+
 
 const UpdateStudent = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -46,6 +40,7 @@ const UpdateStudent = () => {
         open={dialogOpen}
         handleClose={() => handelCloseEdit()}
         data={currentStudent}
+        setDialogOpen={setDialogOpen}
       />
     </Container>
   );

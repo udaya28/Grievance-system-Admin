@@ -1,4 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import {
+  refreshStudentDetailsContext,
+  setLoader,
+} from './../../../../context/context';
+import Axios from 'axios';
+import cookie from 'js-cookie';
+import Snackbar from '@material-ui/core/Snackbar';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -7,12 +14,18 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AlertDialog from './../../../AlertDialog/AlertDialog.component';
 import UpdateForm from './UpdateForm/UpdateForm.component';
-const UpdateDialog = ({ open, handleClose, data }) => {
+const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
   const { innerWidth: width } = window;
   const [openDialogConfirm, setOpenDialogConfirm] = useState(false);
   const [ValidationState, setValidationState] = useState(false);
   const [studentData, setStudentData] = useState({});
   const [disabledState, setDisabledState] = useState({});
+  const [openSnackBar, setOpenSnackBar] = useState({
+    open: false,
+    message: '',
+  });
+  const setShowLoader = useContext(setLoader);
+  const refreshStudentDetails = useContext(refreshStudentDetailsContext);
   const {
     firstName,
     secondName,
@@ -32,7 +45,7 @@ const UpdateDialog = ({ open, handleClose, data }) => {
       jointYear,
       gender,
       rollNumber,
-      dateOfBirth: dateOfBirth.split('-').reverse().join('-'),
+      dateOfBirth: dateOfBirth && dateOfBirth.split('-').reverse().join('-'),
       password,
     });
     setDisabledState({
@@ -65,7 +78,12 @@ const UpdateDialog = ({ open, handleClose, data }) => {
     const keys = Object.keys(disabledState);
     keys.forEach((key) => {
       if (!disabledState[key]) {
-        changedData[key] = studentData[key];
+        if(key === "dateOfBirth"){
+          changedData[key] = studentData[key].split('-').reverse().join('-');
+        }else{
+
+          changedData[key] = studentData[key];
+        }
       }
     });
     return changedData;
@@ -103,11 +121,48 @@ const UpdateDialog = ({ open, handleClose, data }) => {
     }
   };
 
-  const handleConfirmUpdate = () => {
-    let changedData = getChangedData()
-    console.log(changedData, data);
+  const handleConfirmUpdate = async () => {
+    let changedData = getChangedData();
     console.log('confirm update');
+    try {
+      setOpenDialogConfirm(false);
+      console.log(changedData, data._id);
+      const res = await Axios.patch(
+        `https://grievance-app-backend.herokuapp.com/admin/studentDetails/${data._id}`,
+        {
+          data: {
+            ...changedData
+          },
+        },
+        {
+          headers: {
+            token: cookie.get('admin-token'),
+          },
+        }
+      );
+     
+      if (res.status === 200 && res.data.data.updatedStudent.nModified !== 0) {
+        setOpenSnackBar({
+          open: true,
+          message: 'Updated Student successfully',
+        });
+        refreshStudentDetails()
+        setDialogOpen(false)
+      }else{
+        setOpenSnackBar({
+          open: true,
+          message: 'Failed to Update Student',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      setOpenSnackBar({
+        open: true,
+        message: 'Failed to Update Student',
+      });
+    }
   };
+
   return (
     <div>
       <Dialog
@@ -148,6 +203,12 @@ const UpdateDialog = ({ open, handleClose, data }) => {
         content="Are you sure to Update the student"
         confirmButtonColorSecondary={true}
         handleConfirm={handleConfirmUpdate}
+      />
+      <Snackbar
+        open={openSnackBar.open}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackBar({ open: false, message: '' })}
+        message={openSnackBar.message}
       />
     </div>
   );

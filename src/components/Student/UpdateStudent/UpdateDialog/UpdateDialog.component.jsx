@@ -11,6 +11,8 @@ const UpdateDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [openDialogConfirm, setOpenDialogConfirm] = useState(false);
   const [ValidationState, setValidationState] = useState(false);
+  const [studentData, setStudentData] = useState({});
+  const [disabledState, setDisabledState] = useState({});
   const {
     firstName,
     secondName,
@@ -22,9 +24,7 @@ const UpdateDialog = ({ open, handleClose, data }) => {
     password,
   } = data;
 
-  const [studentData, setStudentData] = useState({});
   useEffect(() => {
-    console.log('update');
     setStudentData({
       firstName,
       secondName,
@@ -32,23 +32,44 @@ const UpdateDialog = ({ open, handleClose, data }) => {
       jointYear,
       gender,
       rollNumber,
-      dateOfBirth:dateOfBirth.split('-').reverse().join('-'),
+      dateOfBirth: dateOfBirth.split('-').reverse().join('-'),
       password,
     });
-    return () => {};
+    setDisabledState({
+      firstName: true,
+      secondName: true,
+      departmentName: true,
+      jointYear: true,
+      gender: true,
+      rollNumber: true,
+      dateOfBirth: true,
+      password: true,
+    });
+    return () => {
+      setValidationState(false);
+      setDisabledState({
+        firstName: true,
+        secondName: true,
+        departmentName: true,
+        jointYear: true,
+        gender: true,
+        rollNumber: true,
+        dateOfBirth: true,
+        password: true,
+      });
+    };
   }, [data]);
   useEffect(() => {
     console.log(studentData);
-    return () => {
-      setValidationState(false)
-    };
+    return () => {};
   }, [studentData]);
 
   const handleSubmit = () => {
     setValidationState(true);
-    // setOpenDialogConfirm(true);
+    setOpenDialogConfirm(true);
   };
   const handleConfirmUpdate = () => {
+    console.log(studentData,data)
     console.log('confirm update');
   };
   return (
@@ -71,6 +92,8 @@ const UpdateDialog = ({ open, handleClose, data }) => {
               setStudentData={setStudentData}
               ValidationState={ValidationState}
               setValidationState={setValidationState}
+              disabledState = {disabledState}
+              setDisabledState = {setDisabledState}
             />
           </DialogContentText>
         </DialogContent>

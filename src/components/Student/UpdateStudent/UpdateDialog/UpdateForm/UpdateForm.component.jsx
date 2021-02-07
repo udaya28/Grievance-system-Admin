@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './UpdateForm.styles.css'
+import { green } from '@material-ui/core/colors';
+import './UpdateForm.styles.css';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
 import Grid from '@material-ui/core/Grid';
@@ -8,10 +9,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EditIcon from '@material-ui/icons/Edit';
-const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationState}) => {
-  
+const UpdateForm = ({
+  studentData,
+  setStudentData,
+  ValidationState,
+  disabledState,
+  setDisabledState,
+}) => {
   const handleInput = (e) => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
+  };
+  const handleDisableState = (name) => {
+    setDisabledState({ ...disabledState, [name]: false });
   };
   return (
     <FormGroup>
@@ -25,13 +34,16 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               value={studentData.firstName}
               onInput={handleInput}
               helperText="Minimum of 3 characters length"
-              error={ studentData.firstName.length < 3}
-              
+              error={studentData.firstName.length < 3}
+              disabled={disabledState.firstName}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('firstName')}>
+                      <EditIcon
+                        color={disabledState.firstName ?"disabled":"primary"}
+                        name="firstName"
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -47,12 +59,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               name="secondName"
               value={studentData.secondName}
               onInput={handleInput}
-              error={ studentData.secondName === ''}
+              error={studentData.secondName === ''}
+              disabled={disabledState.secondName}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('secondName')}>
+                      <EditIcon
+                        color={disabledState.secondName ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -69,12 +84,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               name="rollNumber"
               value={studentData.rollNumber}
               onInput={handleInput}
-              error={ studentData.rollNumber === ''}
+              error={studentData.rollNumber === ''}
+              disabled={disabledState.rollNumber}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('rollNumber')}>
+                      <EditIcon
+                        color={disabledState.rollNumber ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -91,12 +109,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               value={studentData.password}
               onInput={handleInput}
               helperText="Minimum of 3 characters length"
-              error={ValidationState && studentData.password.length < 3}
+              error={ValidationState  && !disabledState.password && studentData.password.length < 3}
+              disabled={disabledState.password}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('password')}>
+                      <EditIcon
+                        color={disabledState.password ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -115,12 +136,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               value={studentData.departmentName}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ studentData.departmentName === ''}
+              error={studentData.departmentName === ''}
+              disabled={disabledState.departmentName}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('departmentName')}>
+                      <EditIcon
+                        color={disabledState.departmentName ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -144,22 +168,25 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               value={studentData.jointYear}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ studentData.jointYear === ''}
+              error={studentData.jointYear === ''}
+              disabled={disabledState.jointYear}
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="start" >
-                    <IconButton>
-                      <EditIcon color="primary" />
+                  <InputAdornment position="start">
+                    <IconButton onClick={() => handleDisableState('jointYear')}>
+                      <EditIcon
+                        color={disabledState.jointYear ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
               }}
             >
-              <MenuItem value="2017">2017</MenuItem>
-              <MenuItem value="2018">2018</MenuItem>
-              <MenuItem value="2019">2019</MenuItem>
-              <MenuItem value="2020">2020</MenuItem>
-              <MenuItem value="2021">2021</MenuItem>
+              <MenuItem value={2017}>2017</MenuItem>
+              <MenuItem value={2018}>2018</MenuItem>
+              <MenuItem value={2019}>2019</MenuItem>
+              <MenuItem value={2020}>2020</MenuItem>
+              <MenuItem value={2021}>2021</MenuItem>
             </TextField>
           </FormControl>
         </Grid>
@@ -175,12 +202,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               value={studentData.gender}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ studentData.gender === ''}
+              error={studentData.gender === ''}
+              disabled={disabledState.gender}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('gender')}>
+                      <EditIcon
+                        color={disabledState.gender ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -204,12 +234,15 @@ const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationSt
               }}
               value={studentData.dateOfBirth}
               onInput={handleInput}
-              error={ studentData.dateOfBirth === ''}
+              error={studentData.dateOfBirth === ''}
+              disabled={disabledState.dateOfBirth}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
-                    <IconButton>
-                      <EditIcon color="primary" />
+                    <IconButton onClick={() => handleDisableState('dateOfBirth')}>
+                      <EditIcon
+                        color={disabledState.dateOfBirth ?"disabled":"primary"}
+                      />
                     </IconButton>
                   </InputAdornment>
                 ),

@@ -154,10 +154,16 @@ const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
       }
     } catch (error) {
       console.log(error);
-      setOpenSnackBar({
-        open: true,
-        message: 'Failed to Update Student',
-      });
+      if (error.response.data.message === 'User already exist') {
+        setShowLoader(false);
+        console.log('user already exist');
+        setOpenSnackBar({ open: true, message: 'Roll Number Already Exist' });
+      } else {
+        setOpenSnackBar({
+          open: true,
+          message: 'Failed to Update Student',
+        });
+      }
     }
   };
 

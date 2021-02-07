@@ -59,17 +59,53 @@ const UpdateDialog = ({ open, handleClose, data }) => {
       });
     };
   }, [data]);
-  useEffect(() => {
-    console.log(studentData);
-    return () => {};
-  }, [studentData]);
+
+  const getChangedData = () => {
+    let changedData = {};
+    const keys = Object.keys(disabledState);
+    keys.forEach((key) => {
+      if (!disabledState[key]) {
+        changedData[key] = studentData[key];
+      }
+    });
+    return changedData;
+  };
 
   const handleSubmit = () => {
     setValidationState(true);
-    setOpenDialogConfirm(true);
+    let changedData = getChangedData();
+    const {
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+      password,
+    } = studentData;
+    const arrData = [
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+    ];
+    if (
+      arrData.every((data) => data !== '') &&
+      firstName.length >= 3 &&
+      (password.length >= 3 || disabledState.password) &&
+      Object.keys(changedData).length > 0
+    ) {
+      setOpenDialogConfirm(true);
+    }
   };
+
   const handleConfirmUpdate = () => {
-    console.log(studentData,data)
+    let changedData = getChangedData()
+    console.log(changedData, data);
     console.log('confirm update');
   };
   return (
@@ -92,8 +128,8 @@ const UpdateDialog = ({ open, handleClose, data }) => {
               setStudentData={setStudentData}
               ValidationState={ValidationState}
               setValidationState={setValidationState}
-              disabledState = {disabledState}
-              setDisabledState = {setDisabledState}
+              disabledState={disabledState}
+              setDisabledState={setDisabledState}
             />
           </DialogContentText>
         </DialogContent>

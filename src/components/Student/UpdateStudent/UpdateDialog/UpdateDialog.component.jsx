@@ -78,10 +78,9 @@ const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
     const keys = Object.keys(disabledState);
     keys.forEach((key) => {
       if (!disabledState[key]) {
-        if(key === "dateOfBirth"){
+        if (key === 'dateOfBirth') {
           changedData[key] = studentData[key].split('-').reverse().join('-');
-        }else{
-
+        } else {
           changedData[key] = studentData[key];
         }
       }
@@ -123,7 +122,6 @@ const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
 
   const handleConfirmUpdate = async () => {
     let changedData = getChangedData();
-    console.log('confirm update');
     try {
       setOpenDialogConfirm(false);
       console.log(changedData, data._id);
@@ -131,7 +129,7 @@ const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
         `https://grievance-app-backend.herokuapp.com/admin/studentDetails/${data._id}`,
         {
           data: {
-            ...changedData
+            ...changedData,
           },
         },
         {
@@ -140,15 +138,15 @@ const UpdateDialog = ({ open, handleClose, data, setDialogOpen }) => {
           },
         }
       );
-     
+
       if (res.status === 200 && res.data.data.updatedStudent.nModified !== 0) {
         setOpenSnackBar({
           open: true,
           message: 'Updated Student successfully',
         });
-        refreshStudentDetails()
-        setDialogOpen(false)
-      }else{
+        refreshStudentDetails();
+        setDialogOpen(false);
+      } else {
         setOpenSnackBar({
           open: true,
           message: 'Failed to Update Student',

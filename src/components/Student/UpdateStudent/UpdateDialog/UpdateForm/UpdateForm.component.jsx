@@ -8,8 +8,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EditIcon from '@material-ui/icons/Edit';
-const UpdateForm = ({studentData,setStudentData}) => {
-  const [ValidationState, setValidationState] = useState(false);
+const UpdateForm = ({studentData,setStudentData,ValidationState, setValidationState}) => {
+  
   const handleInput = (e) => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });
   };
@@ -25,10 +25,11 @@ const UpdateForm = ({studentData,setStudentData}) => {
               value={studentData.firstName}
               onInput={handleInput}
               helperText="Minimum of 3 characters length"
-              error={ValidationState && studentData.firstName.length < 3}
+              error={ studentData.firstName.length < 3}
+              
               InputProps={{
                 endAdornment: (
-                  <InputAdornment position="start" style={{padding:"0px"}}>
+                  <InputAdornment position="start">
                     <IconButton>
                       <EditIcon color="primary" />
                     </IconButton>
@@ -46,7 +47,16 @@ const UpdateForm = ({studentData,setStudentData}) => {
               name="secondName"
               value={studentData.secondName}
               onInput={handleInput}
-              error={ValidationState && studentData.secondName === ''}
+              error={ studentData.secondName === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </FormControl>
         </Grid>
@@ -59,20 +69,38 @@ const UpdateForm = ({studentData,setStudentData}) => {
               name="rollNumber"
               value={studentData.rollNumber}
               onInput={handleInput}
-              error={ValidationState && studentData.rollNumber === ''}
+              error={ studentData.rollNumber === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl className="form-component">
             <TextField
-              label="Password"
+              label="Set New Password"
               variant="outlined"
               name="password"
               value={studentData.password}
               onInput={handleInput}
               helperText="Minimum of 3 characters length"
               error={ValidationState && studentData.password.length < 3}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </FormControl>
         </Grid>
@@ -87,7 +115,16 @@ const UpdateForm = ({studentData,setStudentData}) => {
               value={studentData.departmentName}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ValidationState && studentData.departmentName === ''}
+              error={ studentData.departmentName === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             >
               <MenuItem value="CSE">CSE</MenuItem>
               <MenuItem value="IT">IT</MenuItem>
@@ -107,7 +144,16 @@ const UpdateForm = ({studentData,setStudentData}) => {
               value={studentData.jointYear}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ValidationState && studentData.jointYear === ''}
+              error={ studentData.jointYear === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start" >
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             >
               <MenuItem value="2017">2017</MenuItem>
               <MenuItem value="2018">2018</MenuItem>
@@ -129,7 +175,16 @@ const UpdateForm = ({studentData,setStudentData}) => {
               value={studentData.gender}
               onChange={handleInput}
               style={{ textAlign: 'left' }}
-              error={ValidationState && studentData.gender === ''}
+              error={ studentData.gender === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             >
               <MenuItem value="male">Male</MenuItem>
               <MenuItem value="female">Female</MenuItem>
@@ -149,7 +204,16 @@ const UpdateForm = ({studentData,setStudentData}) => {
               }}
               value={studentData.dateOfBirth}
               onInput={handleInput}
-              error={ValidationState && studentData.dateOfBirth === ''}
+              error={ studentData.dateOfBirth === ''}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton>
+                      <EditIcon color="primary" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </FormControl>
         </Grid>

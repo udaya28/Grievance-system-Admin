@@ -10,6 +10,7 @@ import UpdateForm from './UpdateForm/UpdateForm.component';
 const UpdateDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [openDialogConfirm, setOpenDialogConfirm] = useState(false);
+  const [ValidationState, setValidationState] = useState(false);
   const {
     firstName,
     secondName,
@@ -31,17 +32,21 @@ const UpdateDialog = ({ open, handleClose, data }) => {
       jointYear,
       gender,
       rollNumber,
-      dateOfBirth,
+      dateOfBirth:dateOfBirth.split('-').reverse().join('-'),
       password,
     });
     return () => {};
   }, [data]);
   useEffect(() => {
     console.log(studentData);
-    return () => {};
+    return () => {
+      setValidationState(false)
+    };
   }, [studentData]);
+
   const handleSubmit = () => {
-    setOpenDialogConfirm(true);
+    setValidationState(true);
+    // setOpenDialogConfirm(true);
   };
   const handleConfirmUpdate = () => {
     console.log('confirm update');
@@ -64,6 +69,8 @@ const UpdateDialog = ({ open, handleClose, data }) => {
             <UpdateForm
               studentData={studentData}
               setStudentData={setStudentData}
+              ValidationState={ValidationState}
+              setValidationState={setValidationState}
             />
           </DialogContentText>
         </DialogContent>

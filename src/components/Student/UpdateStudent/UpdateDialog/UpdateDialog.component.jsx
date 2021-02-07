@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,10 +6,40 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import AlertDialog from './../../../AlertDialog/AlertDialog.component';
-import UpdateForm from './UpdateForm/UpdateForm.component'
+import UpdateForm from './UpdateForm/UpdateForm.component';
 const UpdateDialog = ({ open, handleClose, data }) => {
   const { innerWidth: width } = window;
   const [openDialogConfirm, setOpenDialogConfirm] = useState(false);
+  const {
+    firstName,
+    secondName,
+    departmentName,
+    jointYear,
+    gender,
+    rollNumber,
+    dateOfBirth,
+    password,
+  } = data;
+
+  const [studentData, setStudentData] = useState({});
+  useEffect(() => {
+    console.log('update');
+    setStudentData({
+      firstName,
+      secondName,
+      departmentName,
+      jointYear,
+      gender,
+      rollNumber,
+      dateOfBirth,
+      password,
+    });
+    return () => {};
+  }, [data]);
+  useEffect(() => {
+    console.log(studentData);
+    return () => {};
+  }, [studentData]);
   const handleSubmit = () => {
     setOpenDialogConfirm(true);
   };
@@ -31,7 +61,10 @@ const UpdateDialog = ({ open, handleClose, data }) => {
         <DialogTitle>Update Details</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <UpdateForm/>
+            <UpdateForm
+              studentData={studentData}
+              setStudentData={setStudentData}
+            />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -55,4 +88,3 @@ const UpdateDialog = ({ open, handleClose, data }) => {
 };
 
 export default UpdateDialog;
-

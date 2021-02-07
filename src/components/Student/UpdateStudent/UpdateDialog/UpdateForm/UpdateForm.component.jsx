@@ -8,17 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import EditIcon from '@material-ui/icons/Edit';
-const UpdateForm = () => {
-  const [studentData, setStudentData] = useState({
-    firstName: '',
-    secondName: '',
-    departmentName: '',
-    jointYear: '',
-    gender: '',
-    rollNumber: '',
-    dateOfBirth: '',
-    password: '',
-  });
+const UpdateForm = ({studentData,setStudentData}) => {
   const [ValidationState, setValidationState] = useState(false);
   const handleInput = (e) => {
     setStudentData({ ...studentData, [e.target.name]: e.target.value });

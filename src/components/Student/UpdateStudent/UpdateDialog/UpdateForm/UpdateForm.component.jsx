@@ -148,6 +148,15 @@ const UpdateForm = ({
               style={{ textAlign: 'left' }}
               error={studentData.departmentName === ''}
               disabled={disabledState.departmentName}
+              SelectProps={{
+                MenuProps: {
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left"
+                  },
+                  getContentAnchorEl: null
+                }
+              }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
@@ -184,6 +193,15 @@ const UpdateForm = ({
               style={{ textAlign: 'left' }}
               error={studentData.jointYear === ''}
               disabled={disabledState.jointYear}
+              SelectProps={{
+                MenuProps: {
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left"
+                  },
+                  getContentAnchorEl: null
+                }
+              }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
@@ -218,6 +236,15 @@ const UpdateForm = ({
               style={{ textAlign: 'left' }}
               error={studentData.gender === ''}
               disabled={disabledState.gender}
+              SelectProps={{
+                MenuProps: {
+                  anchorOrigin: {
+                    vertical: "bottom",
+                    horizontal: "left"
+                  },
+                  getContentAnchorEl: null
+                }
+              }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">

@@ -205,6 +205,15 @@ const CreateStudent = () => {
                 onChange={handleInput}
                 style={{ textAlign: 'left' }}
                 error={ValidationState && studentData.departmentName === ''}
+                SelectProps={{
+                  MenuProps: {
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left"
+                    },
+                    getContentAnchorEl: null
+                  }
+                }}
               >
                 <MenuItem value="CSE">CSE</MenuItem>
                 <MenuItem value="IT">IT</MenuItem>
@@ -225,6 +234,15 @@ const CreateStudent = () => {
                 onChange={handleInput}
                 style={{ textAlign: 'left' }}
                 error={ValidationState && studentData.jointYear === ''}
+                SelectProps={{
+                  MenuProps: {
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left"
+                    },
+                    getContentAnchorEl: null
+                  }
+                }}
               >
                 <MenuItem value="2017">2017</MenuItem>
                 <MenuItem value="2018">2018</MenuItem>
@@ -247,6 +265,15 @@ const CreateStudent = () => {
                 onChange={handleInput}
                 style={{ textAlign: 'left' }}
                 error={ValidationState && studentData.gender === ''}
+                SelectProps={{
+                  MenuProps: {
+                    anchorOrigin: {
+                      vertical: "bottom",
+                      horizontal: "left"
+                    },
+                    getContentAnchorEl: null
+                  }
+                }}
               >
                 <MenuItem value="male">Male</MenuItem>
                 <MenuItem value="female">Female</MenuItem>

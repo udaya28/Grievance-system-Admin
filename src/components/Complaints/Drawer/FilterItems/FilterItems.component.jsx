@@ -7,18 +7,17 @@ import SortIcon from '@material-ui/icons/Sort';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import './FilterItems.styles.css'
+import './FilterItems.styles.css';
 // import Divider from '@material-ui/core/Divider';
-const FilterItems = () => {
+const FilterItems = ({ filters, setFilters }) => {
+  console.log(filters)
+  const handleChange = (e)=>{
+    setFilters({...filters,[e.target.name]:e.target.value})
+  }
   return (
-    <div >
-      <List style={{maxHeight:"100vh", overflow: 'auto'}}>
-        <ListItem
-          button
-          // selected={selectedIndex === 0}
-          // onClick={() => handelClick(0)}
-          
-        >
+    <div>
+      <List style={{ maxHeight: '100vh', overflow: 'auto' }}>
+        <ListItem button>
           <ListItemIcon>
             <SortIcon />
           </ListItemIcon>
@@ -27,10 +26,13 @@ const FilterItems = () => {
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Complaint"
             variant="filled"
-            name="complaintType"
+            name="status"
             className="filter-form-element"
+            size="small"
+            value={filters.status}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -41,19 +43,21 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="unseen">Unseen</MenuItem>
+            <MenuItem value="replayed">Responded</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Category"
             variant="filled"
-            name="complaintType"
-            
+            name="category"
+            size="small"
             className="filter-form-element"
+            value={filters.category}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -64,19 +68,21 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="hostel">Hostel</MenuItem>
+            <MenuItem value="college">College</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Department"
             variant="filled"
-            name="complaintType"
-            
+            name="departmentName"
+            size="small"
             className="filter-form-element"
+            value={filters.departmentName}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -87,19 +93,24 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="CSE">CSE</MenuItem>
+            <MenuItem value="IT">IT</MenuItem>
+            <MenuItem value="ECE">ECE</MenuItem>
+            <MenuItem value="MEC">MEC</MenuItem>
+            <MenuItem value="EEE">EEE</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Academic Year"
             variant="filled"
-            name="complaintType"
-            
+            name="jointYear"
+            size="small"
             className="filter-form-element"
+            value={filters.jointYear}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -110,19 +121,24 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="2017">2017 - 2021</MenuItem>
+            <MenuItem value="2018">2018 - 2022</MenuItem>
+            <MenuItem value="2019">2019 - 2023</MenuItem>
+            <MenuItem value="2020">2020 - 2024</MenuItem>
+            <MenuItem value="2021">2021 - 2025</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Year"
             variant="filled"
-            name="complaintType"
-            
+            name="year"
+            size="small"
             className="filter-form-element"
+            value={filters.year}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -133,19 +149,21 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="2020">2020</MenuItem>
+            <MenuItem value="2021">2021</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Month"
             variant="filled"
-            name="complaintType"
-            
+            name="month"
+            size="small"
             className="filter-form-element"
+            value={filters.month}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -156,19 +174,31 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="Jan">January</MenuItem>
+            <MenuItem value="Feb">February</MenuItem>
+            <MenuItem value="Mar">March</MenuItem>
+            <MenuItem value="Apr">April</MenuItem>
+            <MenuItem value="May">May</MenuItem>
+            <MenuItem value="Jun">June</MenuItem>
+            <MenuItem value="Jul">July</MenuItem>
+            <MenuItem value="Aug">August</MenuItem>
+            <MenuItem value="Sep">September</MenuItem>
+            <MenuItem value="Oct">October</MenuItem>
+            <MenuItem value="Nov">November</MenuItem>
+            <MenuItem value="Dec">December</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
           <TextField
             select
-            label="complaint"
+            label="Gender"
             variant="filled"
-            name="complaintType"
-            
+            name="gender"
+            size="small"
             className="filter-form-element"
+            value={filters.gender}
+            onChange={handleChange}
             SelectProps={{
               MenuProps: {
                 anchorOrigin: {
@@ -179,56 +209,13 @@ const FilterItems = () => {
               },
             }}
           >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="male">Male</MenuItem>
+            <MenuItem value="female">Female</MenuItem>
           </TextField>
         </ListItem>
         <ListItem>
-          <TextField
-            select
-            label="complaint"
-            variant="filled"
-            name="complaintType"
-            
-            className="filter-form-element"
-            SelectProps={{
-              MenuProps: {
-                anchorOrigin: {
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                },
-                getContentAnchorEl: null,
-              },
-            }}
-          >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
-          </TextField>
-        </ListItem>
-        <ListItem>
-          <TextField
-            select
-            label="complaint"
-            variant="filled"
-            name="complaintType"
-            
-            className="filter-form-element"
-            SelectProps={{
-              MenuProps: {
-                anchorOrigin: {
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                },
-                getContentAnchorEl: null,
-              },
-            }}
-          >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Unseen">Unseen</MenuItem>
-            <MenuItem value="Responded">Responded</MenuItem>
-          </TextField>
+          <div style={{ height: '80px', width: '100%' }}></div>
         </ListItem>
       </List>
       {/* <Divider /> */}

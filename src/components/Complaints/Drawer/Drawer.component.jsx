@@ -1,8 +1,8 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles } from '@material-ui/core';
-import FilterItems from './FilterItems/FilterItems.component'
-const FilterDrawer = ({ openFilter, setOpenFilter }) => {
+import FilterItems from './FilterItems/FilterItems.component';
+const FilterDrawer = ({ openFilter, setOpenFilter, filters, setFilters }) => {
   const useStyles = makeStyles((theme) => ({
     drawerPaper: {
       marginTop: '64px', //56
@@ -37,7 +37,7 @@ const FilterDrawer = ({ openFilter, setOpenFilter }) => {
           paper: classes.drawerPaper,
         }}
       >
-        <FilterItems/>
+        <FilterItems filters={filters} setFilters={setFilters} />
       </Drawer>
       <Drawer
         variant="temporary"
@@ -51,7 +51,7 @@ const FilterDrawer = ({ openFilter, setOpenFilter }) => {
           keepMounted: true,
         }}
       >
-        <FilterItems />
+        <FilterItems filters={filters} setFilters={setFilters}/>
       </Drawer>
     </div>
   );

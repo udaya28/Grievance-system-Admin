@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ComplaintBar from './ComplaintBar/ComplaintBar.component';
 import FilterDrawer from './Drawer/Drawer.component';
 import Feed from './Feed/Feed.component';
@@ -9,14 +9,18 @@ import { allComplaintsContext } from '../../context/context';
 const Complaints = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const [filters, setFilters] = useState({
-    status:'all',
-    category:'all',
-    departmentName:'all',
-    jointYear:'all',
-    year:'all',
-    month:'all',
-    gender:'all'
-  })
+    status: 'all',
+    category: 'all',
+    departmentName: 'all',
+    jointYear: 'all',
+    year: 'all',
+    month: 'all',
+    gender: 'all',
+  });
+  useEffect(() => {
+    console.log(filters);
+    return () => {};
+  }, [filters]);
   const allComplaints = useContext(allComplaintsContext);
   return (
     <Grid container className="complaint-container">
@@ -28,8 +32,13 @@ const Complaints = () => {
           </Container>
         </Grid>
       </Grid>
-      <Grid item >
-        <FilterDrawer setOpenFilter={setOpenFilter} openFilter={openFilter} filters={filters} setFilters={setFilters} />
+      <Grid item>
+        <FilterDrawer
+          setOpenFilter={setOpenFilter}
+          openFilter={openFilter}
+          filters={filters}
+          setFilters={setFilters}
+        />
       </Grid>
     </Grid>
   );

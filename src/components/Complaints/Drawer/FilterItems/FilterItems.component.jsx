@@ -10,7 +10,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import './FilterItems.styles.css';
 // import Divider from '@material-ui/core/Divider';
 const FilterItems = ({ filters, setFilters }) => {
-  console.log(filters)
   const handleChange = (e)=>{
     setFilters({...filters,[e.target.name]:e.target.value})
   }

@@ -51,7 +51,7 @@ const FilterDrawer = ({ openFilter, setOpenFilter, filters, setFilters }) => {
           keepMounted: true,
         }}
       >
-        <FilterItems filters={filters} setFilters={setFilters}/>
+        <FilterItems filters={filters} setFilters={setFilters} />
       </Drawer>
     </div>
   );

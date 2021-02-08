@@ -19,7 +19,7 @@ const Complaints = () => {
           </Container>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid item >
         <FilterDrawer setOpenFilter={setOpenFilter} openFilter={openFilter} />
       </Grid>
     </Grid>

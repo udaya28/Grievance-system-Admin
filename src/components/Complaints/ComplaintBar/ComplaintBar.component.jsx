@@ -9,7 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import { refreshComplaintsContext } from './../../../context/context';
-const ComplaintBar = ({ setOpenFilter }) => {
+const ComplaintBar = ({ setOpenFilter,filters, setFilters }) => {
   const refreshComplaints = useContext(refreshComplaintsContext);
   const useStyles = makeStyles((theme) => ({
     search: {
@@ -42,6 +42,9 @@ const ComplaintBar = ({ setOpenFilter }) => {
       width: '100%',
     },
   }));
+  const handleChange = (e) => {
+    setFilters({ ...filters, [e.target.name]: e.target.value });
+  };
   const classes = useStyles();
   return (
     <AppBar position="sticky" className="feed-bar">
@@ -54,13 +57,13 @@ const ComplaintBar = ({ setOpenFilter }) => {
               </div>
               <InputBase
                 name="searchString"
-                // value={searchString}
+                value={filters.searchString}
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
-                // onInput={handleInput}
+                onInput={handleChange}
                 inputProps={{ 'aria-label': 'search' }}
               />
             </div>

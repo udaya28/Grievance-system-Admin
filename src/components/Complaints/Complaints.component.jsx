@@ -27,7 +27,8 @@ const Complaints = () => {
     <Grid container className="complaint-container">
       <Grid item className="feed-container">
         <Grid container direction="column">
-          <ComplaintBar setOpenFilter={setOpenFilter} />
+          <ComplaintBar setOpenFilter={setOpenFilter} filters={filters}
+          setFilters={setFilters} />
           <Container maxWidth="md">
             <Feed allComplaints={allComplaints} />
           </Container>

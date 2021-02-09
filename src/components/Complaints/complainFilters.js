@@ -19,7 +19,7 @@ const getFilteredComplaints = (allComplains, filters) => {
       filterGender(data, gender) &&
       filterYear(data, year) &&
       filterMonth(data, month) &&
-      isSubString(data,searchString)
+      isSubString(data, searchString)
   );
   return filteredData;
 };
@@ -46,12 +46,11 @@ const filterYear = (data, year) =>
 const filterMonth = (data, month) =>
   month === 'all' || data.createdAt.split('-')[1] === month;
 
-  
 const isSubString = (data, str) => {
-    return (
-      Object.values(data)
-        .join(' ')
-        .toLocaleLowerCase()
-        .search(str.toLocaleLowerCase()) !== -1
-    );
-  };
+  return (
+    Object.values(data)
+      .join(' ')
+      .toLocaleLowerCase()
+      .search(str.toLocaleLowerCase()) !== -1
+  );
+};

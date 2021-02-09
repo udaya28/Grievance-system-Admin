@@ -105,7 +105,7 @@ const DrawerItems = ({setOpenDrawer}) => {
             </Link>
           </List>
         </Collapse>
-        <Link to="/Grievance-system-Admin/profile">
+        {/* <Link to="/Grievance-system-Admin/profile">
           <ListItem
             button
             selected={selectedIndex === 6}
@@ -116,7 +116,7 @@ const DrawerItems = ({setOpenDrawer}) => {
             </ListItemIcon>
             <ListItemText primary="Profile" />
           </ListItem>
-        </Link>
+        </Link> */}
       </List>
     </div>
   );

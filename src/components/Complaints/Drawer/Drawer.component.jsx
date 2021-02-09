@@ -12,7 +12,8 @@ const FilterDrawer = ({ openFilter, setOpenFilter, filters, setFilters }) => {
         display: 'block',
       },
       display: 'none',
-      height: 'auto',
+      // height: '80vh',
+      // zIndex:'-1',
       width: '240px',
     },
     drawerPaper1: {

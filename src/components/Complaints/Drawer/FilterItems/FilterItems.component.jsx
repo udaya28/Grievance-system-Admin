@@ -15,7 +15,7 @@ const FilterItems = ({ filters, setFilters }) => {
   };
   return (
     <div>
-      <List style={{ maxHeight: '100vh', overflow: 'auto' }}>
+      <List style={{ maxHeight: '100vh' }}>
         <ListItem button>
           <ListItemIcon>
             <SortIcon />

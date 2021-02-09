@@ -16,6 +16,7 @@ const Complaints = () => {
     year: 'all',
     month: 'all',
     gender: 'all',
+    searchString:''
   });
   useEffect(() => {
     console.log(filters);

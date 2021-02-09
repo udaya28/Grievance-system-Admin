@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ComplaintCard from './ComplaintCard/ComplaintCard.component';
 import Grid from '@material-ui/core/Grid';
 import FeedDialog from './FeedDialog/FeedDialog.component';
-const Feed = ({ allComplaints }) => {
+const Feed = ({ complaints }) => {
   const [openFeedDialog, setOpenFeedDialog] = useState(false);
   const [feedDialogData, setFeedDialogData] = useState({});
   const handleClose = () => {
@@ -17,7 +17,10 @@ const Feed = ({ allComplaints }) => {
     <>
       <Grid container spacing={1} style={{ padding: '10px 5px 30px 5px' }}>
         {/* <p>{JSON.stringify(allComplaints).split(',').join(' ')}</p> */}
-        {allComplaints.map((data, index) => (
+        {
+          complaints.length === 0 && <p style={{margin:'30vh auto'}}>No match found</p>
+          }
+        {complaints.map((data, index) => (
           <ComplaintCard
             data={data}
             key={index}

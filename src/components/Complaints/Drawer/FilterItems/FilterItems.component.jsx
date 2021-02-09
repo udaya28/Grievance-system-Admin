@@ -131,6 +131,31 @@ const FilterItems = ({ filters, setFilters }) => {
         <ListItem>
           <TextField
             select
+            label="Gender"
+            variant="filled"
+            name="gender"
+            size="small"
+            className="filter-form-element"
+            value={filters.gender}
+            onChange={handleChange}
+            SelectProps={{
+              MenuProps: {
+                anchorOrigin: {
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                },
+                getContentAnchorEl: null,
+              },
+            }}
+          >
+            <MenuItem value="all">All</MenuItem>
+            <MenuItem value="male">Male</MenuItem>
+            <MenuItem value="female">Female</MenuItem>
+          </TextField>
+        </ListItem>
+        <ListItem>
+          <TextField
+            select
             label="Year"
             variant="filled"
             name="year"
@@ -174,45 +199,21 @@ const FilterItems = ({ filters, setFilters }) => {
             }}
           >
             <MenuItem value="all">All</MenuItem>
-            <MenuItem value="Jan">January</MenuItem>
-            <MenuItem value="Feb">February</MenuItem>
-            <MenuItem value="Mar">March</MenuItem>
-            <MenuItem value="Apr">April</MenuItem>
-            <MenuItem value="May">May</MenuItem>
-            <MenuItem value="Jun">June</MenuItem>
-            <MenuItem value="Jul">July</MenuItem>
-            <MenuItem value="Aug">August</MenuItem>
-            <MenuItem value="Sep">September</MenuItem>
-            <MenuItem value="Oct">October</MenuItem>
-            <MenuItem value="Nov">November</MenuItem>
-            <MenuItem value="Dec">December</MenuItem>
+            <MenuItem value="01">January</MenuItem>
+            <MenuItem value="02">February</MenuItem>
+            <MenuItem value="03">March</MenuItem>
+            <MenuItem value="04">April</MenuItem>
+            <MenuItem value="05">May</MenuItem>
+            <MenuItem value="06">June</MenuItem>
+            <MenuItem value="07">July</MenuItem>
+            <MenuItem value="08">August</MenuItem>
+            <MenuItem value="09">September</MenuItem>
+            <MenuItem value="10">October</MenuItem>
+            <MenuItem value="11">November</MenuItem>
+            <MenuItem value="12">December</MenuItem>
           </TextField>
         </ListItem>
-        <ListItem>
-          <TextField
-            select
-            label="Gender"
-            variant="filled"
-            name="gender"
-            size="small"
-            className="filter-form-element"
-            value={filters.gender}
-            onChange={handleChange}
-            SelectProps={{
-              MenuProps: {
-                anchorOrigin: {
-                  vertical: 'bottom',
-                  horizontal: 'left',
-                },
-                getContentAnchorEl: null,
-              },
-            }}
-          >
-            <MenuItem value="all">All</MenuItem>
-            <MenuItem value="male">Male</MenuItem>
-            <MenuItem value="female">Female</MenuItem>
-          </TextField>
-        </ListItem>
+
         <ListItem>
           <div style={{ height: '80px', width: '100%' }}></div>
         </ListItem>

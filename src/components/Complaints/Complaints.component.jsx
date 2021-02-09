@@ -6,7 +6,10 @@ import './Complaints.styles.css';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { allComplaintsContext } from '../../context/context';
+import getFilteredComplaints from './complainFilters';
 const Complaints = () => {
+  const allComplaints = useContext(allComplaintsContext);
+  const [filteredComplaints, setFilteredComplaints] = useState([]);
   const [openFilter, setOpenFilter] = useState(false);
   const [filters, setFilters] = useState({
     status: 'all',
@@ -16,21 +19,23 @@ const Complaints = () => {
     year: 'all',
     month: 'all',
     gender: 'all',
-    searchString:''
+    searchString: '',
   });
   useEffect(() => {
-    console.log(filters);
+    setFilteredComplaints(getFilteredComplaints(allComplaints, filters));
     return () => {};
-  }, [filters]);
-  const allComplaints = useContext(allComplaintsContext);
+  }, [filters, allComplaints]);
   return (
     <Grid container className="complaint-container">
       <Grid item className="feed-container">
         <Grid container direction="column">
-          <ComplaintBar setOpenFilter={setOpenFilter} filters={filters}
-          setFilters={setFilters} />
+          <ComplaintBar
+            setOpenFilter={setOpenFilter}
+            filters={filters}
+            setFilters={setFilters}
+          />
           <Container maxWidth="md">
-            <Feed allComplaints={allComplaints} />
+            <Feed complaints={filteredComplaints} />
           </Container>
         </Grid>
       </Grid>

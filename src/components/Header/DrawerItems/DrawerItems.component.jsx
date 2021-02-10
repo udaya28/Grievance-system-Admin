@@ -5,7 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import SchoolIcon from '@material-ui/icons/School';
 import AssessmentIcon from '@material-ui/icons/Assessment';
 import ExpandLess from '@material-ui/icons/ExpandLess';

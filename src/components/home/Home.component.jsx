@@ -32,7 +32,7 @@ const Home = () => {
     refreshComplaints();
     refreshStudentDetails();
     return () => {};
-  }, []);
+  });
   const refreshComplaints = async () => {
     setShowLoader(true);
     const complaint = await Axios.get(

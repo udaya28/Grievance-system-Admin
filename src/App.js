@@ -36,7 +36,7 @@ function App() {
         setIsLoggedIn(false);
       }
     })();
-  }, []);
+  });
 
   const theme = createMuiTheme({
     palette: {

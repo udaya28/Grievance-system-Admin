@@ -7,5 +7,3 @@ export const allComplaintsContext = createContext([]);
 export const refreshComplaintsContext = createContext({});
 export const studentDetailsContext = createContext([]);
 export const refreshStudentDetailsContext = createContext({});
-// export const filteredComplaints = createContext([])
-// export const setFilteredComplaints = createContext({})

@@ -1,11 +1,17 @@
-import React from 'react'
-
+import React, { useContext } from 'react';
+import {
+  allComplaintsContext,
+  studentDetailsContext,
+} from './../../context/context';
 const Dashboard = () => {
-    return (
-        <div>
-            <h1>Dashboard</h1>
-        </div>
-    )
-}
+  const allComplaints = useContext(allComplaintsContext);
+  const studentDetails = useContext(studentDetailsContext);
+  return (
+    <div>
+      <p>{JSON.stringify(allComplaints)}</p>
+      <p>{JSON.stringify(studentDetails)}</p>
+    </div>
+  );
+};
 
-export default Dashboard
+export default Dashboard;

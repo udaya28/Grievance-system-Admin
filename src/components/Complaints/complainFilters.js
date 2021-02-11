@@ -1,5 +1,4 @@
 const getFilteredComplaints = (allComplains, filters) => {
-  console.log(filters);
   const {
     category,
     departmentName,

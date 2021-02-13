@@ -13,6 +13,7 @@ const Dashboard = () => {
   return (
     <Container maxWidth='md'>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore quod doloribus iure quo explicabo qui inventore assumenda nostrum quasi iste. Aperiam, labore totam excepturi facilis at laboriosam distinctio recusandae sit.</p>
+      <h1>coming soon</h1>
     </Container>
   );
 };
